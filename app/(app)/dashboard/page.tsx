@@ -1,14 +1,20 @@
-import { LoginButton, LogoutButton } from "@/app/auth";
-import { User } from "@/app/user";
+import React from 'react';
+import { GetServerSidePropsContext, GetServerSidePropsResult } from 'next';
+import { Session } from 'next-auth';
+import { getSession } from 'next-auth/react';
+import { LoginButton, LogoutButton } from '@/app/auth';
+import { User } from '@/app/user';
 
-import { getSession } from "next-auth/react";
+interface DashboardProps {
+  session: Session | null;
+}
 
-export default function Dashboard({session }) {
+export default function Dashboard({ session }: DashboardProps) {
   return (
     <div className="flex flex-col items-center">
       <h2 className="mb-4">Welcome to the dashboard</h2>
       <div className="flex">
-        {!session ?  <LogoutButton />:<LoginButton /> }
+        {!session ? <LogoutButton /> : <LoginButton />}
       </div>
       <h2 className="mt-4">Server Session</h2>
       <pre>{JSON.stringify(session, null, 2)}</pre>
@@ -18,7 +24,9 @@ export default function Dashboard({session }) {
   );
 }
 
-export async function getServerSideProps(context: any) {
+export async function getServerSideProps(
+  context: GetServerSidePropsContext
+): Promise<GetServerSidePropsResult<DashboardProps>> {
   const session = await getSession(context);
 
   return {
