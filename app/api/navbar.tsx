@@ -29,7 +29,7 @@ export const NavBar = () => {
                 </Link>
               </li>
               <li>
-                <Link legacyBehavior href="/dashboard">
+                <Link legacyBehavior href="/pages/dashboard">
                   <a className="text-gray-900 dark:text-white hover:underline">Dashboard</a>
                 </Link>
               </li>

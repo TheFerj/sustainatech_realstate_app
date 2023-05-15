@@ -27,7 +27,7 @@ export const Form = () => {
       })
       console.log('Res', res)
       if (!res?.error) {
-        router.push(callbackUrl || '/dashboard')
+        router.push(callbackUrl || '/pages')
 
       } else {
         setError('Invalid email or password')
