@@ -1,3 +1,4 @@
+import { NavBar } from './api/navbar'
 import './globals.css'
 import { Providers } from './providers'
 
@@ -14,6 +15,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+        <NavBar/>
         <Providers>{children}</Providers>
       </body>
     </html>
