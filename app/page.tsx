@@ -8,12 +8,10 @@ export default async function Home() {
 
   return (
     <main>
-      <LoginButton />
-      <LogoutButton />
-      <h2>Server Session</h2>
-      <pre></pre>
-      <h2>Client Call</h2>
-      <User />
+
+      <h2>Home</h2>
+
+
     </main>
   )
 }
