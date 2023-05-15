@@ -1,5 +1,5 @@
 import React from 'react';
-import { GetServerSidePropsContext, GetServerSidePropsResult } from 'next';
+import { GetServerSideProps, GetServerSidePropsContext, GetServerSidePropsResult } from 'next';
 import { Session } from 'next-auth';
 import { getSession } from 'next-auth/react';
 import { LoginButton, LogoutButton } from '@/app/auth';
@@ -24,9 +24,9 @@ export default function Dashboard({ session }: DashboardProps) {
   );
 }
 
-export async function getServerSideProps(
+export const getServerSideProps: GetServerSideProps<DashboardProps> = async (
   context: GetServerSidePropsContext
-): Promise<GetServerSidePropsResult<DashboardProps>> {
+): Promise<GetServerSidePropsResult<DashboardProps>> => {
   const session = await getSession(context);
 
   return {
@@ -34,4 +34,4 @@ export async function getServerSideProps(
       session,
     },
   };
-}
+};
