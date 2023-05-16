@@ -17,14 +17,19 @@ export default async function Dashboard() {
   const location = user?.location;
   const contact_number = user?.contact_number;
 
+  const deleteUser = await prisma.user.delete({
+    where: {
+      email: 'bert@prisma.io',
+    },
+  })
 
   return (
     <div className="grid w-full items-center justify-center">
       <div className="p-4 border border-gray-300 rounded-md text-center">
-        
+
         <h2>Server Session</h2>
         <div>Name: {name}</div>
-        <div>Business Name: {business_name}</div>
+        <div>Business Names: {business_name}</div>
         <div>Bussines Type:{business_type}</div>
         <div>Location: {location}</div>
         <div>Contact_number: {contact_number}</div>
