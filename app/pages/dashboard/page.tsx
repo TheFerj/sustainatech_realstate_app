@@ -8,21 +8,32 @@ import { getSession } from "next-auth/react";
 export default async function Dashboard() {
   // Fetch user using Prisma based on session ID
   const session = await getServerSession(authOptions);
-  const userId = session?.user?.id; // Replace with your session ID retrieval log
+  const userId = session?.user?.email; // Replace with your session ID retrieval log
+  async function getData() {
+    const res = await fetch('http://localhost:3000/api/user/'+userId, {
+      method: 'GET',
+    });
+  
+    if (!res.ok) {
+      throw new Error('Failed to fetch data');
+    }
+  
+    return res.json();
+  }
 
-  const user = await prisma.user.findUnique({ where: { id: parseInt(userId!, 10) } });
+
+  const data = await getData()
+
+  console.log('---------data--------')
+  console.log(data)
+  console.log('---------data--------')
+
+  const user = await prisma.user.findUnique({ where: { email: userId! } });
   const name = user?.name;
   const business_name = user?.business_name;
   const business_type = user?.business_type;
   const location = user?.location;
   const contact_number = user?.contact_number;
-
-  const deleteUser = await prisma.user.delete({
-    where: {
-      email: 'bert@prisma.io',
-    },
-  })
-
   return (
     <div className="grid w-full items-center justify-center">
       <div className="p-4 border border-gray-300 rounded-md text-center">

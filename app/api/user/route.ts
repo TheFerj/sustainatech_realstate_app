@@ -3,10 +3,16 @@ import { NextResponse } from "next/server"
 
 
 
-export async function GET(request:Request) {
-    const user = await prisma.user.findMany()
-    return NextResponse.json(user)
-
+export async function GET(request: Request) {
+    const users = await prisma.user.findMany();
+    const modifiedUsers = users.map(user => {
+        return {
+            name: user.name,
+            location: user.location,
+            contact_number: user.contact_number
+        };
+    });
+    return NextResponse.json(modifiedUsers);
 }
 
 export async function POST(request:Request){

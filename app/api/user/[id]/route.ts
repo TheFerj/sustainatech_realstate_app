@@ -4,12 +4,13 @@ import { NextResponse } from "next/server"
 
 
 export async function GET(request:Request, {params} : {params:{id:string}}) {
-    const id = params.id
+    const email = params.id
     const user = await prisma.user.findUnique({
-        where:{
-            id: parseInt(id,10)
-        }
-    })
+        where: {
+          email: email,
+        },
+      });
+      
     return NextResponse.json(user)
 }
 
