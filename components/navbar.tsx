@@ -34,8 +34,8 @@ export const NavBar = () => {
                 </Link>
               </li>
               <li>
-              <Link legacyBehavior href="/team">
-                <a href="#" className="text-gray-900 dark:text-white hover:underline">Team</a>
+              <Link legacyBehavior href="/pages/profile">
+                <a href="#" className="text-gray-900 dark:text-white hover:underline">Profile</a>
                 </Link>
               </li>
             </ul>

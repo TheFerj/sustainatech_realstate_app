@@ -1,4 +1,4 @@
-import { NavBar } from './api/navbar'
+import { NavBar } from '../components/navbar'
 import './globals.css'
 import { Providers } from './providers'
 

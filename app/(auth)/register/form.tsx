@@ -1,25 +1,23 @@
-'use client'
+"use client"
 
-import { Alert } from '@/components/ui/alert'
-import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
-import { Label } from '@/components/ui/label'
-import { signIn } from 'next-auth/react'
-import { useState } from 'react'
+import { Alert } from '@/components/ui/alert';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { signIn } from 'next-auth/react';
+import { useState } from 'react';
 
 export const RegisterForm = () => {
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const [name, setName] = useState('')
-  const [business_name, setBusiness_name] = useState('')
-  const [business_type, setBusiness_type] = useState('')
-  const [location, setLocation] = useState('')
-  const [contact_number, setContact] = useState('')
-
-  const [error, setError] = useState<string | null>(null)
+  const [email, setEmail] = useState('');
+  const [name, setName] = useState('');
+  const [location, setLocation] = useState('');
+  const [password, setPassword] = useState('');
+  const role = 'tenant';
+  const [error, setError] = useState<string | null>(null);
+  const [successMessage, setSuccessMessage] = useState<string | null>(null);
 
   const onSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
+    e.preventDefault();
 
     try {
       const res = await fetch('/api/register', {
@@ -28,27 +26,23 @@ export const RegisterForm = () => {
           email,
           password,
           name,
-          business_name,
-          business_type,
           location,
-          contact_number
-
-          
-
+          role, // Include the role property in the request body
         }),
         headers: {
-          'Content-Type': 'application/json'
-        }
-      })
+          'Content-Type': 'application/json',
+        },
+      });
       if (res.ok) {
-        signIn()
+        signIn();
+        setSuccessMessage('Successfully created a new tenant account');
       } else {
-        setError((await res.json()).error)
+        setError((await res.json()).error);
       }
     } catch (error: any) {
-      setError(error?.message)
+      setError(error?.message);
     }
-  }
+  };
 
   return (
     <form onSubmit={onSubmit} className="space-y-12 w-full sm:w-[400px]">
@@ -63,9 +57,8 @@ export const RegisterForm = () => {
           type="email"
         />
       </div>
-      {/* address */}
       <div className="grid w-full items-center gap-1.5">
-        <Label htmlFor="name">Name</Label>
+        <Label htmlFor="email">Name</Label>
         <Input
           className="w-full"
           required
@@ -75,9 +68,8 @@ export const RegisterForm = () => {
           type="name"
         />
       </div>
-      {/* address */}
       <div className="grid w-full items-center gap-1.5">
-        <Label htmlFor="location">Location</Label>
+        <Label htmlFor="email">Address</Label>
         <Input
           className="w-full"
           required
@@ -85,42 +77,6 @@ export const RegisterForm = () => {
           onChange={(e) => setLocation(e.target.value)}
           id="location"
           type="location"
-        />
-      </div>
-      {/* bussines name */}
-      <div className="grid w-full items-center gap-1.5">
-        <Label htmlFor="business_name">Bussiness Name</Label>
-        <Input
-          className="w-full"
-          required
-          value={business_name}
-          onChange={(e) => setBusiness_name(e.target.value)}
-          id="business_name"
-          type="business_name"
-        />
-      </div>
-      {/* bussines type */}
-      <div className="grid w-full items-center gap-1.5">
-        <Label htmlFor="business_type">Bussiness Type</Label>
-        <Input
-          className="w-full"
-          required
-          value={business_type}
-          onChange={(e) => setBusiness_type(e.target.value)}
-          id="business_type"
-          type="business_type"
-        />
-      </div>
-      {/* contact */}
-      <div className="grid w-full items-center gap-1.5">
-        <Label htmlFor="contact">Contact</Label>
-        <Input
-          className="w-full"
-          required
-          value={contact_number}
-          onChange={(e) => setContact(e.target.value)}
-          id="contact"
-          type="contact"
         />
       </div>
       <div className="grid w-full items-center gap-1.5">
@@ -135,11 +91,16 @@ export const RegisterForm = () => {
         />
       </div>
       {error && <Alert>{error}</Alert>}
+      {successMessage && (
+        <div className="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400" role="alert">
+          <span className="font-medium">{successMessage}</span>
+        </div>
+      )}
       <div className="w-full">
         <Button className="w-full" size="lg">
           Register
         </Button>
       </div>
     </form>
-  )
-}
+  );
+};

@@ -1,7 +1,6 @@
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { LoginButton, LogoutButton } from "@/app/auth";
-import { User } from "@/app/user";
-import { prisma } from "@/lib/prisma";
+
 import { getServerSession } from "next-auth";
 import { getSession } from "next-auth/react";
 
@@ -9,26 +8,20 @@ export default async function Dashboard() {
   // Fetch user using Prisma based on session ID
   const session = await getServerSession(authOptions);
   const userId = session?.user?.email; // Replace with your session ID retrieval log
-  async function getData() {
-    const res = await fetch('https://sustainatech-realstate-app.vercel.app/api/user/'+userId, {
+  async function getUSerData() {
+    const res = await fetch('http://localhost:3000/api/user/'+userId, {
       method: 'GET',
     });
   
     if (!res.ok) {
       throw new Error('Failed to fetch data');
     }
-  
     return res.json();
   }
 
 
-  const data = await getData()
+  const user = await getUSerData();
 
-  console.log('---------data--------')
-  console.log(data)
-  console.log('---------data--------')
-
-  const user = await prisma.user.findUnique({ where: { email: userId! } });
   const name = user?.name;
   const business_name = user?.business_name;
   const business_type = user?.business_type;
@@ -44,7 +37,6 @@ export default async function Dashboard() {
         <div>Bussines Type:{business_type}</div>
         <div>Location: {location}</div>
         <div>Contact_number: {contact_number}</div>
-        
         
         <LoginButton />
         <LogoutButton />
