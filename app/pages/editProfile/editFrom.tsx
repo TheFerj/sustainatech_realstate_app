@@ -114,7 +114,7 @@ export const ProfileForm: React.FC<ProfileFormProps> = ({
           type="business_name"
         />
       </div>
-      <div className="grid w-full items-center gap-1.5">
+      {/* <div className="grid w-full items-center gap-1.5">
         <Label htmlFor="email">Bussines Type</Label>
         <Input
           className="w-full"
@@ -124,7 +124,7 @@ export const ProfileForm: React.FC<ProfileFormProps> = ({
           id="business_type"
           type="business_type"
         />
-      </div>
+      </div> */}
       <div className="grid w-full items-center gap-1.5">
         <Label htmlFor="password">Address</Label>
         <Input
@@ -136,6 +136,21 @@ export const ProfileForm: React.FC<ProfileFormProps> = ({
           type="Address"
         />
       </div>
+<Label htmlFor="email">Bussines Type</Label>
+<select id="business_type" className="bg-gray-50 border border-green-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" onChange={(e) => setBusiness_type((e.target as HTMLSelectElement).value)}>
+  <option selected>Choose a country</option>
+  <option value="Manufacturing and Industrial businesses">Manufacturing and Industrial businesses</option>
+  <option value="Residential Businesses">Residential Businesses</option>
+  <option value="Foodservice and Hospitality businesses">Foodservice and Hospitality businesses</option>
+  <option value="Retail and Commercial businesses">Retail and Commercial businesses</option>
+  <option value="Healthcare and Medical businesses">Healthcare and Medical businesses</option>
+  <option value="Office and Administrative businesses">Office and Administrative businesses</option>
+  <option value="Transportation and Logistics businesses">Transportation and Logistics businesses</option>
+  <option value="Agriculture and Farming businesses">Agriculture and Farming businesses</option>
+  <option value="Construction and Building businesses">Construction and Building businesses</option>
+</select>
+
+
       {error && <Alert>{error}</Alert>}
       {successMessage && (
         <div className="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400" role="alert">
