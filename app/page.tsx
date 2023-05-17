@@ -20,15 +20,12 @@ export default async function Home() {
   const data = await getData()
   console.log('-------data----')
   console.log(data[0].name)
-  console.log('-------data----')
-  const session = await getServerSession(authOptions)
-  const userId = session?.user?.id; // Extract the "id" property from the session object
   return (
     <main>
       <pre></pre>
       <h2>Home</h2>
       <h2>Server call</h2>
-      <pre>{JSON.stringify(userId)}</pre> {/* Display the extracted "id" property */}
+      <pre>{data[0].name}</pre> {/* Display the extracted "id" property */}
       
       <h2>Client call</h2>
       <User/>
