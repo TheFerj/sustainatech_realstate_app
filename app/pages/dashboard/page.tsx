@@ -1,7 +1,6 @@
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { LoginButton, LogoutButton } from "@/app/auth";
-import { User } from "@/app/user";
-import { prisma } from "@/lib/prisma";
+
 import { getServerSession } from "next-auth";
 import { getSession } from "next-auth/react";
 

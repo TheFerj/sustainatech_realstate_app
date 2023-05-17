@@ -12,13 +12,18 @@ export default async function Dashboard() {
   const session = await getServerSession(authOptions);
   const userId = session?.user?.email; // Replace with your session ID retrieval log
   async function getUSerData() {
-    const res = await fetch('http://localhost:3000/api/user/'+userId, {
-      method: 'GET',
-    });
-    if (!res.ok) {
-      throw new Error('Failed to fetch data');
-    }
-    return res.json();
+    const res = await fetch('http://localhost:3000/api/user/' + userId, {
+  method: 'GET',
+  headers: {
+    'Cache-Control': 'no-cache' // or other cache control directives
+  }
+});
+
+if (!res.ok) {
+  throw new Error('Failed to fetch data');
+}
+
+return res.json();
   }
 
 
@@ -34,19 +39,7 @@ export default async function Dashboard() {
   console.log('----------data---------')
   return (
     <div className="grid w-full items-center justify-center">
-      <div className="p-4 border border-gray-300 rounded-md text-center">
-
-        <h2>Profile Page</h2>
-        <div>Name: {name}</div>
-        <div>Business Names: {business_name}</div>
-        <div>Bussines Type:{business_type}</div>
-        <div>Location: {location}</div>
-        <div>Contact_number: {contact_number}</div>
-        
-        <LoginButton />
-        <LogoutButton />
-      </div>
-      <ConcernBox/>
+      
       <div>
 
                 <div className="bg-white p-3 shadow-sm rounded-sm">
@@ -64,40 +57,37 @@ export default async function Dashboard() {
                         <div className="grid md:grid-cols-2 text-sm">
                             <div className="grid grid-cols-2">
                                 <div className="px-4 py-2 font-semibold">Name</div>
+                                <div className="px-4 py-2">{name}</div>
+                            </div>
+                            <div className="grid grid-cols-2">
+                                <div className="px-4 py-2 font-semibold">Bussines Name</div>
+                                <div className="px-4 py-2">{business_name}</div>
+                            </div>
+                            <div className="grid grid-cols-2">
+                                <div className="px-4 py-2 font-semibold">Email</div>
                                 <div className="px-4 py-2">{email}</div>
                             </div>
                             <div className="grid grid-cols-2">
-                                <div className="px-4 py-2 font-semibold">Last Name</div>
-                                <div className="px-4 py-2">Doe</div>
+                                <div className="px-4 py-2 font-semibold">Bussines Type</div>
+                                <div className="px-4 py-2">{business_type}</div>
                             </div>
                             <div className="grid grid-cols-2">
-                                <div className="px-4 py-2 font-semibold">Gender</div>
-                                <div className="px-4 py-2">Female</div>
+                                <div className="px-4 py-2 font-semibold">Contact Number</div>
+                                <div className="px-4 py-2">{contact_number}</div>
                             </div>
                             <div className="grid grid-cols-2">
-                                <div className="px-4 py-2 font-semibold">Contact No.</div>
-                                <div className="px-4 py-2">+11 998001001</div>
-                            </div>
-                            <div className="grid grid-cols-2">
-                                <div className="px-4 py-2 font-semibold">Current Address</div>
-                                <div className="px-4 py-2">Beech Creek, PA, Pennsylvania</div>
-                            </div>
-                            <div className="grid grid-cols-2">
-                                <div className="px-4 py-2 font-semibold">Permanant Address</div>
-                                <div className="px-4 py-2">Arlington Heights, IL, Illinois</div>
-                            </div>
-                            <div className="grid grid-cols-2">
-                                <div className="px-4 py-2 font-semibold">Email.</div>
-                                <div className="px-4 py-2">
-                                    <a className="text-blue-800" href="mailto:jane@example.com">jane@example.com</a>
-                                </div>
+                                <div className="px-4 py-2 font-semibold">Address</div>
+                                
+                                    <div className="px-4 py-2">{location}</div>
+                                
                             </div>
                         </div>
                     </div>
                     <button
-                        className="block w-full text-blue-800 text-sm font-semibold rounded-lg hover:bg-gray-100 focus:outline-none focus:shadow-outline focus:bg-gray-100 hover:shadow-xs p-3 my-4">Show
-                        Full Information</button>
+                        className="block w-full text-blue-800 text-sm font-semibold rounded-lg hover:bg-gray-100 focus:outline-none focus:shadow-outline focus:bg-gray-100 hover:shadow-xs p-3 my-4">
+                          Edit Information</button>
                 </div>
+                <ConcernBox/>
       </div>
     </div>
   );
