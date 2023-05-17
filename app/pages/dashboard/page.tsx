@@ -10,7 +10,7 @@ export default async function Dashboard() {
   const session = await getServerSession(authOptions);
   const userId = session?.user?.email; // Replace with your session ID retrieval log
   async function getData() {
-    const res = await fetch('http://localhost:3000/api/user/'+userId, {
+    const res = await fetch('https://sustainatech-realstate-app.vercel.app/api/user/'+userId, {
       method: 'GET',
     });
   

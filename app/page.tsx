@@ -4,7 +4,7 @@ import { LoginButton, LogoutButton } from './auth'
 import { User } from './user'
 import { NextResponse } from 'next/server'
 async function getData() {
-  const res = await fetch('http://localhost:3000/api/user', {
+  const res = await fetch('https://sustainatech-realstate-app.vercel.app/api/user', {
     method: 'GET',
   });
 
