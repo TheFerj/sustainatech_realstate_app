@@ -40,12 +40,12 @@ export async function PUT(
 export async function PATCH(
     request:Request, {params} : {params:{id:string}}) {
 
-    const id = params.id
+    const email = params.id
     const json = await request.json()
 
     const updated = await prisma.user.update({
         where:{
-            id: parseInt(id,10)
+            email: email
         },
         data:json
     })
