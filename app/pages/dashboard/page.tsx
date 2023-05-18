@@ -1,5 +1,6 @@
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { LoginButton, LogoutButton } from "@/app/auth";
+import { ConcernBox } from "@/components/concernForm";
 
 import { getServerSession } from "next-auth";
 import { getSession } from "next-auth/react";
@@ -29,18 +30,9 @@ export default async function Dashboard() {
   const contact_number = user?.contact_number;
   return (
     <div className="grid w-full items-center justify-center">
-      <div className="p-4 border border-gray-300 rounded-md text-center">
-
-        <h2>Server Session</h2>
-        <div>Name: {name}</div>
-        <div>Business Names: {business_name}</div>
-        <div>Bussines Type:{business_type}</div>
-        <div>Location: {location}</div>
-        <div>Contact_number: {contact_number}</div>
-        
-        <LoginButton />
-        <LogoutButton />
-      </div>
+      <div></div>
+      <ConcernBox/>
     </div>
+    
   );
 }

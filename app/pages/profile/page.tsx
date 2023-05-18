@@ -1,13 +1,9 @@
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
-import { LoginButton, LogoutButton } from "@/app/auth";
-import { User } from "@/app/user";
 import { ConcernBox } from "@/components/concernForm";
-import { prisma } from "@/lib/prisma";
 import { getServerSession } from "next-auth";
-import { getSession } from "next-auth/react";
-import { NextResponse } from "next/server";
+import Link from "next/link";
 
-export default async function Dashboard() {
+export default async function Profile() {
   // Fetch user using Prisma based on session ID
   const session = await getServerSession(authOptions);
   const userId = session?.user?.email; // Replace with your session ID retrieval log
@@ -51,7 +47,7 @@ return res.json();
                                     d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                             </svg>
                         </span>
-                        <span className="tracking-wide">About</span>
+                        <span className="tracking-wide">Profile</span>
                     </div>
                     <div className="text-gray-700">
                         <div className="grid md:grid-cols-2 text-sm">
@@ -83,11 +79,14 @@ return res.json();
                             </div>
                         </div>
                     </div>
+                    <Link legacyBehavior href="pages/editProfile">
                     <button
                         className="block w-full text-blue-800 text-sm font-semibold rounded-lg hover:bg-gray-100 focus:outline-none focus:shadow-outline focus:bg-gray-100 hover:shadow-xs p-3 my-4">
                           Edit Information</button>
+                    </Link>
+                    
                 </div>
-                <ConcernBox/>
+                
       </div>
     </div>
   );

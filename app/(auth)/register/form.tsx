@@ -6,8 +6,10 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { signIn } from 'next-auth/react';
 import { useState } from 'react';
-
-export const RegisterForm = () => {
+interface RegisterFormProps {
+  names: string;
+}
+export const RegisterForm: React.FC<RegisterFormProps> = ({names}) => {
   const [email, setEmail] = useState('');
   const [name, setName] = useState('');
   const [location, setLocation] = useState('');
@@ -47,6 +49,7 @@ export const RegisterForm = () => {
   return (
     <form onSubmit={onSubmit} className="space-y-12 w-full sm:w-[400px]">
       <div className="grid w-full items-center gap-1.5">
+        {names}
         <Label htmlFor="email">Email</Label>
         <Input
           className="w-full"
