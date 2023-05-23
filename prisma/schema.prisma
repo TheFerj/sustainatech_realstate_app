@@ -24,6 +24,7 @@ model User {
   posts           Post[]  @relation("userPost")
   appliances      Appliances[] @relation("userAppliance")
   wall            Walls[] @relation("userWalls")
+  energyTracker   EnergyTracker[]@relation("userEnergy")
 }
 
 model Post {
@@ -54,4 +55,12 @@ model Walls{
   details String?
   userId     Int
   user       User      @relation("userWalls", fields: [userId], references: [id])
+}
+model EnergyTracker{
+  id         Int       @id @default(autoincrement())
+  electricBill    Float?
+  energyUsage String?
+  billDate DateTime
+  userId     Int
+  user       User      @relation("userEnergy", fields: [userId], references: [id])
 }
