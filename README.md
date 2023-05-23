@@ -44,4 +44,4 @@ npm install tailwindcss@latest
 
 ## cd to app directory
 
-## run npm run dev
+
