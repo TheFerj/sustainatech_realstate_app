@@ -22,6 +22,8 @@ model User {
   location        String?
   contact_number  String?
   posts           Post[]  @relation("userPost")
+  appliances      Appliances[] @relation("userAppliance")
+  wall            Walls[] @relation("userWalls")
 }
 
 model Post {
@@ -34,4 +36,22 @@ model Post {
   user       User      @relation("userPost", fields: [userId], references: [id])
   status String?
   type String?
+}
+
+model Appliances {
+  id         Int       @id @default(autoincrement())
+  type      String?
+  brand    String?
+  ernergy_rating    String?
+  userId     Int
+  user       User      @relation("userAppliance", fields: [userId], references: [id])
+  model String?
+}
+
+model Walls{
+  id         Int       @id @default(autoincrement())
+  type    String?
+  details String?
+  userId     Int
+  user       User      @relation("userWalls", fields: [userId], references: [id])
 }
