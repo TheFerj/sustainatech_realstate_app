@@ -1,5 +1,5 @@
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
-import { ConcernBox } from "@/components/concernForm";
+import { ConcernBox } from "@/app/pages/dashboard/concernForm";
 import { getServerSession } from "next-auth";
 import Link from "next/link";
 
