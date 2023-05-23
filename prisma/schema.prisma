@@ -21,7 +21,7 @@ model User {
   business_type   String?
   location        String?
   contact_number  String?
-  posts           Post[]
+  posts           Post[]  @relation("userPost")
 }
 
 model Post {
@@ -30,6 +30,8 @@ model Post {
   content    String
   createdAt  DateTime  @default(now())
   urgency    String?
-  user       User      @relation(fields: [userId], references: [id])
   userId     Int
+  user       User      @relation("userPost", fields: [userId], references: [id])
+  status String?
+  type String?
 }
