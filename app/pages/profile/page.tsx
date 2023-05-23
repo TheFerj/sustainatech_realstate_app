@@ -1,5 +1,5 @@
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
-import { ConcernBox } from "@/app/pages/dashboard/concernForm";
+
 import { getServerSession } from "next-auth";
 import Link from "next/link";
 
@@ -81,7 +81,7 @@ return res.json();
                     </div>
                     <Link legacyBehavior href="pages/editProfile">
                     <button
-                        className="block w-full text-blue-800 text-sm font-semibold rounded-lg hover:bg-gray-100 focus:outline-none focus:shadow-outline focus:bg-gray-100 hover:shadow-xs p-3 my-4">
+                        className="block w-full text-green-800 text-sm font-semibold rounded-lg hover:bg-gray-100 focus:outline-none focus:shadow-outline focus:bg-gray-100 hover:shadow-xs p-3 my-4">
                           Edit Information</button>
                     </Link>
                     

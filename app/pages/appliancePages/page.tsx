@@ -2,6 +2,8 @@
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { getServerSession } from "next-auth";
 import { LogoutButton } from "@/app/auth";
+import { ApplianceHandler } from "./applianceHandler";
+import { WallHandler } from "./wallHandler";
 
 
 
@@ -28,7 +30,7 @@ export default async function ConcernPage() {
   const email = users.email;
 
   async function getUserPosts() {
-    const res = await fetch('http://localhost:3000/api/user/' + user_Id + '/post/userPost', {
+    const res = await fetch('http://localhost:3000/api/user/' + user_Id + '/appliance/userAppliance', {
       method: 'GET',
       headers: {
         'Cache-Control': 'no-cache' // or other cache control directives
@@ -42,13 +44,28 @@ export default async function ConcernPage() {
     return res.json();
   }
   const userPosts = await getUserPosts(); // Await the asynchronous function to get the array of user posts
-      
+  async function getUserWall() {
+    const res = await fetch('http://localhost:3000/api/user/' + user_Id + '/walls/userWalls', {
+      method: 'GET',
+      headers: {
+        'Cache-Control': 'no-cache' // or other cache control directives
+      }
+    });
+  
+    if (!res.ok) {
+      throw new Error('Failed to fetch data');
+    }
+  
+    return res.json();
+  }   
+  const userWall = await getUserWall();
   return (
-    
-    <div className="grid w-full items-center justify-center">
-      <LogoutButton/>
+    <div className="columns-2">
+        
+    <ApplianceHandler user_Id={user_Id} email={email} userPosts={userPosts}/>
 
-  </div>
+  <WallHandler user_Id={user_Id} email={email} userPosts={userWall}/>
+    </div>
   
   );
 }

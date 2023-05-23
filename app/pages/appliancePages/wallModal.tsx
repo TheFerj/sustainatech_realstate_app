@@ -1,14 +1,16 @@
 'use client'
 
 import { useState } from "react";
-import { PostConcern } from "./concernForm";
 
-interface ConcernModalProps {
+import { PostAppliance } from "./applianceForm";
+import { PostWall } from "./wallForm";
+
+interface WallModalProps {
   id: string;
   email: string;
 }
 
-const ConcernModal = ({ id, email }: ConcernModalProps) => {
+const WallModal = ({ id, email }: WallModalProps) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const toggleModal = () => {
@@ -27,7 +29,7 @@ const ConcernModal = ({ id, email }: ConcernModalProps) => {
         type="button"
         onClick={toggleModal}
       >
-        Send Concern
+        Add Appliance
       </button>
 
       {isModalOpen && (
@@ -38,8 +40,8 @@ const ConcernModal = ({ id, email }: ConcernModalProps) => {
           className="fixed top-0 left-0 right-0 z-50 w-full h-screen flex items-center justify-center"
         >
           <div className="relative bg-white rounded-lg shadow p-6">
-            <h3 className="text-xl font-semibold mb-4">Concern Form</h3>
-            <PostConcern id={id} email={email} /> {/* Pass id and email as props */}
+            <h3 className="text-xl font-semibold mb-4">Wall Form</h3>
+            <PostWall id={id} email={email} /> {/* Pass id and email as props */}
             <div className="flex justify-end">
               <button
                 type="button"
@@ -56,4 +58,4 @@ const ConcernModal = ({ id, email }: ConcernModalProps) => {
   );
 };
 
-export default ConcernModal;
+export default WallModal;

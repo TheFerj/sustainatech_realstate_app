@@ -42,7 +42,7 @@ model Appliances {
   id         Int       @id @default(autoincrement())
   type      String?
   brand    String?
-  ernergy_rating    String?
+  energy_rating    String?
   userId     Int
   user       User      @relation("userAppliance", fields: [userId], references: [id])
   model String?

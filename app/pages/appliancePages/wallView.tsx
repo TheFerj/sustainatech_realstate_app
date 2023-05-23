@@ -4,22 +4,17 @@
 import { useState } from 'react';
 
 
-interface ViewConcernFormProps {
+interface WallViewProps {
   id: string;
-  concern: string;
-  title: string;
   type: string;
-  urgency: string;
-  createdAt: string;
+  details:string;
 }
 
-export const ViewConcern: React.FC<ViewConcernFormProps> = ({
+export const WallView: React.FC<WallViewProps> = ({
   id,
-  concern,
-  title,
-  createdAt,
   type,
-  urgency,
+  details,
+
 }) => {
   const [isClicked, setIsClicked] = useState(false);
 
@@ -37,23 +32,13 @@ export const ViewConcern: React.FC<ViewConcernFormProps> = ({
           <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr>
               <th scope="col" className="px-6 py-3">
-                Title
-              </th>
-              <th scope="col" className="px-6 py-3">
-                Concern
-              </th>
-              <th scope="col" className="px-6 py-3">
-                Date
-              </th>
-              <th scope="col" className="px-6 py-3">
                 Type
               </th>
               <th scope="col" className="px-6 py-3">
-                Urgency
+                Details
               </th>
-              <th scope="col" className="px-6 py-3">
-                Status
-              </th>
+
+
             </tr>
           </thead>
           <tbody onClick={toggleModal} className={isClicked ? "cursor-pointer bg-gray-200" : "cursor-pointer"}>
@@ -62,12 +47,9 @@ export const ViewConcern: React.FC<ViewConcernFormProps> = ({
                 scope="row"
                 className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
               >
-                {title}
+                {type}
               </th>
-              <td className="px-6 py-4">{concern}</td>
-              <td className="px-6 py-4">{createdAt}</td>
-              <td className="px-6 py-4">{type}</td>
-              <td className="px-6 py-4">{urgency}</td>
+              <td className="px-6 py-4">{details}</td>
             </tr>
           </tbody>
         </table>
@@ -80,14 +62,8 @@ export const ViewConcern: React.FC<ViewConcernFormProps> = ({
           className="fixed top-0 left-0 right-0 z-50 w-full h-screen flex items-center justify-center"
         >
           <div className="relative bg-white rounded-lg shadow p-6">
-            <h3 className="text-xl font-semibold mb-4">Details</h3>
-            <h3 className="text-l font-semibold mb-4">Date: {createdAt}</h3>
-            <h3 className="text-l font-semibold mb-4">Title: {title}</h3>
-            <h3 className="text-l font-semibold mb-4">Concern: {concern}</h3>
-            <h3 className="text-l font-semibold mb-4">Urgency: {urgency}</h3>
-            <h3 className="text-l font-semibold mb-4">Type: {type}</h3>
-            <h3 className="text-l font-semibold mb-4">Status: </h3>
-            <h3 className="text-l font-semibold mb-4">Comment/Remarks: </h3>
+            <h3 className="text-xl font-semibold mb-4">Type{type}</h3>
+            <h3 className="text-l font-semibold mb-4">Details: {details}</h3>
             <div className="flex justify-end">
               <button
                 type="button"

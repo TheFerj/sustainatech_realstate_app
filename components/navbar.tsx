@@ -14,7 +14,7 @@ export const NavBar = () => {
           <div className="flex items-center">
             <a href="tel:5541251234" className="mr-6 text-sm text-gray-500 dark:text-white hover:underline">(330) 331-234</a>
             <Link legacyBehavior href="/login">
-              <a className="text-sm text-blue-600 dark:text-blue-500 hover:underline">Login</a>
+              <a className="text-sm text-green-600 dark:text-green-500 hover:underline">Login</a>
             </Link>
           </div>
         </div>
