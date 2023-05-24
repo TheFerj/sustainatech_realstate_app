@@ -2,6 +2,7 @@ import { LogoutButton } from '@/app/auth';
 import React, { Key } from 'react'
 import EnergyTrackingModal from './energyTrackingModal';
 import { EnergyTrackingView } from './energyTrackingView';
+import { ServiceProvider } from './serviceProvider';
 
 
 
@@ -14,8 +15,10 @@ interface EnergyTrackingHandlerProps{
 
 
 
-export const EnergyTrackingHandler: React.FC<EnergyTrackingHandlerProps> =  ({user_Id,email,userPosts}) => {
-
+export const EnergyTrackingHandler: React.FC<EnergyTrackingHandlerProps> =  async ({user_Id,email,userPosts}) => {
+  const serviceProvider = new ServiceProvider() // Replace with the actual user ID\
+  const energyTrackerData = await serviceProvider.getEnergyTracker(user_Id);
+  console.log("asdasdasdsa");
   return (
     <>
     <div className="grid w-full items-center justify-center">

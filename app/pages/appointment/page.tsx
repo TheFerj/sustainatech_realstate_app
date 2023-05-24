@@ -1,8 +1,7 @@
 
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { getServerSession } from "next-auth";
-import { EnergyTrackingHandler } from "./energyTrackingHandler";
-import { ServiceProvider } from "./serviceProvider";
+import { AppointmentHandler } from "./appointmentHandler";
 // other import statements...
 
 export default async function engergyTracking() {
@@ -46,8 +45,10 @@ export default async function engergyTracking() {
   return (
     <>
     <div>
+    Appointment Page
         </div>
-        <EnergyTrackingHandler user_Id={user_Id} email={email} userPosts={userEnergy} />
+        <AppointmentHandler user_Id={user_Id} email={email} userPosts={userEnergy} />
+        
     </>
   
   );
