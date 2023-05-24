@@ -22,8 +22,11 @@ model User {
   location        String?
   contact_number  String?
   posts           Post[]  @relation("userPost")
+  appliances      Appliances[] @relation("userAppliance")
+  wall            Walls[] @relation("userWalls")
+  energyTracker   EnergyTracker[]@relation("userEnergy")
+  appointment     Appointment[]@relation("userAppointment")
 }
-
 model Post {
   id         Int       @id @default(autoincrement())
   title      String
@@ -34,4 +37,42 @@ model Post {
   user       User      @relation("userPost", fields: [userId], references: [id])
   status String?
   type String?
+}
+
+model Appliances {
+  id         Int       @id @default(autoincrement())
+  type      String?
+  brand    String?
+  energy_rating    String?
+  userId     Int
+  user       User      @relation("userAppliance", fields: [userId], references: [id])
+  model String?
+}
+
+model Walls{
+  id         Int       @id @default(autoincrement())
+  type    String?
+  details String?
+  userId     Int
+  user       User      @relation("userWalls", fields: [userId], references: [id])
+}
+model EnergyTracker{
+  id         Int       @id @default(autoincrement())
+  electricBill    Float?
+  energyUsage String?
+  billDate DateTime
+  userId     Int
+  user       User      @relation("userEnergy", fields: [userId], references: [id])
+}
+model Appointment{
+  id         Int       @id @default(autoincrement())
+  issue    String?
+  description String?
+  prefferedDate DateTime?
+  ActualDate DateTime?
+  location String?
+  contact String?
+  status String?
+  userId     Int
+  user       User      @relation("userAppointment", fields: [userId], references: [id])
 }

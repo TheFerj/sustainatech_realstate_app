@@ -2,12 +2,11 @@ import { JSXElementConstructor, Key, ReactElement, ReactFragment, ReactPortal, u
 
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { getServerSession } from "next-auth";
-import DeleteModal from "./deleteModal";
-import { PostConcern } from "./concernForm";
-import { ViewConcern } from "./concernView";
-import { title } from "process";
-import ConcernModal from "./deleteModal";
+
+import { PostConcern } from "../concernPage/concernForm";
+
 import { LogoutButton } from "@/app/auth";
+
 
 
 // other import statements...
@@ -53,7 +52,6 @@ export default async function Dashboard() {
         title: post.title,
         content: post.content,
       }));
-      console.log(userPosts);
 
       function formatDate(dateString: string): string {
         const date = new Date(dateString);
@@ -68,17 +66,48 @@ export default async function Dashboard() {
     
     <div className="grid w-full items-center justify-center">
       <LogoutButton/>
-      <ConcernModal id={user_Id} email={email} />
-
+      {/* <ConcernModal id={user_Id} email={email} />
     {userPosts.reverse().map((post: { id: Key; title: string; content: string; createdAt:string; type:string; urgency:string;}) => (
       <>
       <div key={post.id}>
         <ViewConcern id={user_Id} concern={post.content} title={post.title} createdAt={formatDate(post.createdAt)} type={post.type} urgency={post.urgency} />
       </div></>
+      
     ))}
-    
-    
+     */}
+    <div className="columns-3 ...">
+
+<a href="./concernPage" className="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+    <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">View Concerns</h5>
+    <p className="font-normal text-gray-700 dark:text-gray-400">Here is the page for the concerns</p>
+</a>
+<a href="./appliancePages" className="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+    <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Appliance and Walls</h5>
+    <p className="font-normal text-gray-700 dark:text-gray-400">View appliance and walls here</p>
+</a>
+<a href="./energyTracking" className="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+    <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Energy Tracking</h5>
+    <p className="font-normal text-gray-700 dark:text-gray-400">Track Energy Consumption</p>
+</a>
   </div>
+  <div className="columns-3 ... p-10">
+
+<a href="./appointment" className="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+    <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Appointment</h5>
+    <p className="font-normal text-gray-700 dark:text-gray-400">check appointment here</p>
+</a>
+<a href="./appointment" className="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+    <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Appointment</h5>
+    <p className="font-normal text-gray-700 dark:text-gray-400">check appointment here</p>
+</a>
+<a href="./appointment" className="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+    <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Appointment</h5>
+    <p className="font-normal text-gray-700 dark:text-gray-400">check appointment here</p>
+</a>
+
+  </div>
+</div>
+
   
   );
 }

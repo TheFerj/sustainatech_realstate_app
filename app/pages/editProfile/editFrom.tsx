@@ -137,7 +137,7 @@ export const ProfileForm: React.FC<ProfileFormProps> = ({
         />
       </div>
 <Label htmlFor="email">Bussines Type</Label>
-<select id="business_type" className="bg-gray-50 border border-green-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" onChange={(e) => setBusiness_type((e.target as HTMLSelectElement).value)}>
+<select id="business_type" className="bg-gray-50 border border-green-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" onChange={(e) => setBusiness_type((e.target as HTMLSelectElement).value)}>
   <option selected>Choose a country</option>
   <option value="Manufacturing and Industrial businesses">Manufacturing and Industrial businesses</option>
   <option value="Residential Businesses">Residential Businesses</option>

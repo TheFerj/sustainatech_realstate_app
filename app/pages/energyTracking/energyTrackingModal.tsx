@@ -1,14 +1,14 @@
 'use client'
 
 import { useState } from "react";
-import { PostConcern } from "./concernForm";
+import { PostEnergyTracking } from "./energyTrackingFrom";
 
-interface ConcernModalProps {
+interface EnergyTrackingModalProps {
   id: string;
   email: string;
 }
 
-const ConcernModal = ({ id, email }: ConcernModalProps) => {
+const EnergyTrackingModal = ({ id, email }: EnergyTrackingModalProps) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const toggleModal = () => {
@@ -23,11 +23,13 @@ const ConcernModal = ({ id, email }: ConcernModalProps) => {
       <button
         data-modal-target="staticModal"
         data-modal-toggle="staticModal"
-        className="block text-white bg-green-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+        className="block text-white bg-green-700 hover:bg-green-800 
+        focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm 
+        px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
         type="button"
         onClick={toggleModal}
       >
-        Send Concern
+        Add Energy Bill
       </button>
 
       {isModalOpen && (
@@ -38,12 +40,12 @@ const ConcernModal = ({ id, email }: ConcernModalProps) => {
           className="fixed top-0 left-0 right-0 z-50 w-full h-screen flex items-center justify-center"
         >
           <div className="relative bg-white rounded-lg shadow p-6">
-            <h3 className="text-xl font-semibold mb-4">Concern Form</h3>
-            <PostConcern id={id} email={email} /> {/* Pass id and email as props */}
+            <h3 className="text-xl font-semibold mb-4">Energy Bill Form</h3>
+            <PostEnergyTracking id={id} email={email} /> {/* Pass id and email as props */}
             <div className="flex justify-end">
               <button
                 type="button"
-                className="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10"
+                className="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-green-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10"
                 onClick={toggleModal}
               >
                 Close
@@ -56,4 +58,4 @@ const ConcernModal = ({ id, email }: ConcernModalProps) => {
   );
 };
 
-export default ConcernModal;
+export default EnergyTrackingModal;

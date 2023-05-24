@@ -1,8 +1,7 @@
 'use client'
 
 import { useState } from 'react';
-import { Button } from '../../../components/ui/button';
-import { Input } from '@/components/ui/input';
+
 
 interface PostConcernFormProps {
   id: string;
@@ -77,7 +76,7 @@ return res.json();
           </div>
           <div>
               <label htmlFor="subject" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Concern Type</label>
-              <select id="business_type" className="bg-gray-50 border border-green-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" onChange={(e) => settype((e.target as HTMLSelectElement).value)}>
+              <select id="business_type" className="bg-gray-50 border border-green-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" onChange={(e) => settype((e.target as HTMLSelectElement).value)}>
   <option selected>Choose a type</option>
   <option value="Energy waste,">Energy waste</option>
   <option value="Water waste">Water waste</option>
@@ -92,10 +91,10 @@ return res.json();
               className="bg-gray-50 border
                border-green-300
                 text-gray-900 text-sm rounded-lg
-                 focus:ring-blue-500
-                  focus:border-blue-500 block w-full p-2.5
+                 focus:ring-green-500
+                  focus:border-green-500 block w-full p-2.5
                    dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white
-                    dark:focus:ring-blue-500 dark:focus:border-blue-500" onChange={(e) => seturgency((e.target as HTMLSelectElement).value)}>
+                    dark:focus:ring-green-500 dark:focus:border-green-500" onChange={(e) => seturgency((e.target as HTMLSelectElement).value)}>
   <option selected>Choose a urgency</option>
   <option value="High">High</option>
   <option value="Medium">Medium</option>
