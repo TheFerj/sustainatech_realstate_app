@@ -1,9 +1,9 @@
-interface IFinanceManager { 
+export interface IFinanceManager { 
 // functions subject to change
 
 
-generateLedger(); 
-showExpenseHistory();
+generateLedger():void; 
+showExpenseHistory():void;
 
 
 }

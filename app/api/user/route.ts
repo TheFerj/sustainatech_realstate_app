@@ -7,6 +7,9 @@ export async function GET(request: Request) {
     const users = await prisma.user.findMany();
     const modifiedUsers = users.map(user => {
         return {
+            id:user.id,
+            business_name:user.business_name,
+            business_type:user.business_type,
             name: user.name,
             location: user.location,
             contact_number: user.contact_number

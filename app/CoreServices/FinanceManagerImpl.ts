@@ -1,4 +1,4 @@
-class FinanceManager extends Service implements IFinanceManager {
+export class FinanceManager extends Service implements IFinanceManager {
 
     // attributes go here 
 

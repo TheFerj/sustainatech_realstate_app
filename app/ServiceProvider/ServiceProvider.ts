@@ -1,13 +1,18 @@
+import { EnergyTracker } from "@prisma/client";
+import { AppointmentManager } from "../CoreServices/AppointmentManagerImpl";
+import { ConcernClassification } from "../CoreServices/ConcernClassificationImpl";
+import { Service } from "../CoreServices/Service";
+import { FinanceManager } from "../CoreServices/FinanceManagerImpl";
+import { Reporter } from "../CoreServices/ReportingImpl";
 
 export class ServiceProvider { 
-    
-chosenService: Service;
-
-appointmentManager: AppointmentManager;
-concernClassification: ConcernClassification;
-energyTracker: EnergyTracker;
-financeManager: FinanceManager;
-reporter: Reporter;
+     
+chosenService!: Service;
+    appointmentManager!: AppointmentManager;
+concernClassification!: ConcernClassification;
+energyTracker!: EnergyTracker;
+financeManager!: FinanceManager;
+reporter!: Reporter;
 
 
     setService(service: string) {
@@ -17,9 +22,6 @@ reporter: Reporter;
         }
         if(service === 'ConcernClassification'){
             this.chosenService = this.concernClassification;
-        }
-        if(service === 'EnergyTracking'){
-            this.chosenService = this.energyTracker; 
         }
         if(service === 'FinanceManager'){ 
             this.chosenService = this.financeManager;
@@ -35,7 +37,3 @@ reporter: Reporter;
 
         }
 }
-
-
-
-
