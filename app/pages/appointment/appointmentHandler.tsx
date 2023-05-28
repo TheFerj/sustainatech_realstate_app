@@ -1,6 +1,7 @@
 import { LogoutButton } from '@/app/auth';
 import React, { Key } from 'react'
 import AppointmentModal from './appointmentModal';
+import { ViewAppointment } from './appointmentView';
 
 
 
@@ -21,14 +22,14 @@ export const AppointmentHandler: React.FC<AppointmentHandlerProps> =  ({user_Id,
       <AppointmentModal id={user_Id} email={email} />
 
 
-      {/* {userPosts.reverse().map((post: { id: Key; electricBill: string; energyUsage: string; billDate:string; type:string; urgency:string;}) => (
+      {userPosts.reverse().map((post: { id: Key; issue: string; description: string; prefferedDate:string; ActualDate:string; location:string; contact:string; status:string;}) => (
         <>
       <div key={post.id}>
-        <EnergyTrackingView id={user_Id} electricBill={post.electricBill} energyUsage={post.energyUsage} billDate={post.billDate}  />
+        <ViewAppointment id={user_Id} issue={post.issue} description={post.description} prefferedDate={post.prefferedDate} ActualDate={post.ActualDate} location={post.location} contact={post.contact} status={post.status} />
       </div></>
       
       ))}
-     */}
+    
     
   </div>
       </>

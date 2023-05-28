@@ -135,7 +135,10 @@ export const PostAppointment: React.FC<PostAppointmentFormProps> = ({ id, email 
      
     </div>
     <div className="">
-      <textarea name="textarea" id="text" cols={30} rows={10} className="mb-10 h-40 w-full resize-none 
+      <textarea value={description} onChange={(e) => {
+      const inputValue = (e.target as HTMLTextAreaElement).value;
+      setDescription(inputValue);
+    }} name="textarea" id="text" cols={30} rows={10} className="mb-10 h-40 w-full resize-none 
       rounded-md border
        border-slate-300 p-5 font-semibold
         text-gray-500">
