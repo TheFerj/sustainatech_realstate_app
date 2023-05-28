@@ -1,8 +1,8 @@
-interface IAppointmentManager { 
+export interface IAppointmentManager { 
 // functionality subject to change
 
- createAppointment() 
- updateAppointment()
- generateAppointmentTicket();
+ createAppointment():void;
+ updateAppointment():void;
+ generateAppointmentTicket():void;
 
 }

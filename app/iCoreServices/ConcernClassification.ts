@@ -1,7 +1,7 @@
-interface IConcernClassification {
+export interface IConcernClassification {
 // functions subject to change
 
-showConcernList();
-classifyConcern();
+showConcernList():void;
+classifyConcern():void;
 
 }

@@ -2,6 +2,7 @@
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { getServerSession } from "next-auth";
 import { AppointmentHandler } from "./appointmentHandler";
+import { ServiceProvider } from "@/app/ServiceProvider/ServiceProvider";
 // other import statements...
 
 export default async function engergyTracking() {
@@ -22,6 +23,15 @@ export default async function engergyTracking() {
   const users = await getUserData();
   const user_Id = users.id;
   const email = users.email;
+
+
+  // const service = new ServiceProvider()
+  // const appointment = service.setService("appointment");
+  // const getService = appointment.service.getService();
+  // const appointmentCreate = getService.createAppointment();
+
+
+
 
 // Await the asynchronous function to get the array of user posts
   async function getUserEnergy() {

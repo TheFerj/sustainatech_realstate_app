@@ -1,4 +1,4 @@
-class ConcernClassification extends Service implements IConcernClassification {
+export class ConcernClassification extends Service implements IConcernClassification {
 
 
     //attributes go here

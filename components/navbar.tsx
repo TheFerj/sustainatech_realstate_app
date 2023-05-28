@@ -1,13 +1,16 @@
 import Link from 'next/link';
 
-export const NavBar = () => {
+interface NavbarProps {
+  role: string;
+}
+
+export const NavBar: React.FC<NavbarProps> = ({ role }) => {
   return (
     <>
       <nav className="bg-green-400 border-gray-200 dark:bg-gray-900">
         <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl p-4">
           <Link legacyBehavior href="/">
             <a className="flex items-center">
-              {/* <img src="https://flowbite.com/docs/images/logo.svg" className="h-8 mr-3" alt="Flowbite Logo" /> */}
               <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Sustainatech</span>
             </a>
           </Link>
@@ -28,16 +31,35 @@ export const NavBar = () => {
                   <a className="text-gray-900 dark:text-white hover:underline" aria-current="page">Home</a>
                 </Link>
               </li>
-              <li>
+              
+              {role === "admin" ? (
+                <>
+                <li>
+                <Link legacyBehavior href="/pages/adminDashboard">
+                  <a className="text-gray-900 dark:text-white hover:underline">Dashboard</a>
+                </Link>
+              </li>
+                <li>
+                  <Link legacyBehavior href="/pages/profile">
+                    <a href="#" className="text-gray-900 dark:text-white hover:underline">Admin Profile</a>
+                  </Link>
+                </li>
+                </>
+                
+              ) : (
+                <>
+                <li>
                 <Link legacyBehavior href="/pages/dashboard">
                   <a className="text-gray-900 dark:text-white hover:underline">Dashboard</a>
                 </Link>
               </li>
-              <li>
-              <Link legacyBehavior href="/pages/profile">
-                <a href="#" className="text-gray-900 dark:text-white hover:underline">Profile</a>
-                </Link>
-              </li>
+                <li>
+                  <Link legacyBehavior href="/pages/profile">
+                    <a href="#" className="text-gray-900 dark:text-white hover:underline">Profile</a>
+                  </Link>
+                </li>
+                </>
+              )}
             </ul>
           </div>
         </div>
