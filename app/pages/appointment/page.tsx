@@ -25,7 +25,7 @@ export default async function engergyTracking() {
 
 // Await the asynchronous function to get the array of user posts
   async function getUserEnergy() {
-    const res = await fetch('http://localhost:3000/api/user/' + user_Id + '/energyTracker/userEnergy', {
+    const res = await fetch('http://localhost:3000/api/user/' + user_Id + '/appointment/userAppointment', {
       method: 'GET',
       headers: {
         'Cache-Control': 'no-cache' // or other cache control directives
@@ -41,13 +41,13 @@ export default async function engergyTracking() {
   // const serviceProvider = new ServiceProvider() // Replace with the actual user ID\
   // const energyTrackerData = await serviceProvider.getEnergyTracker(user_Id);
   // console.log(1);
-  const userEnergy = await getUserEnergy();
+  const userAppointment = await getUserEnergy();
   return (
     <>
     <div>
     Appointment Page
         </div>
-        <AppointmentHandler user_Id={user_Id} email={email} userPosts={userEnergy} />
+        <AppointmentHandler user_Id={user_Id} email={email} userPosts={userAppointment} />
         
     </>
   
