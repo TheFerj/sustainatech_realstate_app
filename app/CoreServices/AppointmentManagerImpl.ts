@@ -1,13 +1,13 @@
-import { IAppointmentManager } from "../iCoreServices/AppointmentManager";
-import { Service } from "./Service";
 
-export class AppointmentManager extends Service implements IAppointmentManager{
+import { IAppointmentManager } from "../iCoreServices/AppointmentManager";
+
+export class AppointmentManager implements IAppointmentManager{
     
 // attributes go here  
     
     
     createAppointment() {
-        return console.log('success')
+        //TODO
     }
 
     updateAppointment() {

@@ -1,4 +1,7 @@
-export class ConcernClassification extends Service implements IConcernClassification {
+
+import { IConcernClassification } from "../iCoreServices/ConcernClassification";
+
+export class ConcernClassification implements IConcernClassification {
 
 
     //attributes go here

@@ -1,4 +1,7 @@
-export class FinanceManager extends Service implements IFinanceManager {
+
+import { IFinanceManager } from "../iCoreServices/FinanceManager";
+
+export class FinanceManager implements IFinanceManager {
 
     // attributes go here 
 

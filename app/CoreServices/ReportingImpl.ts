@@ -1,7 +1,7 @@
-import { IReporter } from "../iCoreServices/Reporting";
-import { Service } from "./Service";
 
-export  class Reporter extends Service implements IReporter { 
+import { IReporter } from "../iCoreServices/Reporting";
+
+export class Reporter implements IReporter { 
 
     // attributes go here
 
