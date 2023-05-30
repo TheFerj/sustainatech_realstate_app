@@ -18,7 +18,8 @@ const CustomEditor = ({ scheduler }: CustomEditorProps) => {
   const [state, setState] = useState({
     title: event?.title || "",
     description: event?.description || "",
-    urgency: event?.urgency || ""
+    urgency: event?.urgency || "",
+    status: event?.status || "",
   });
   const [error, setError] = useState("");
 
@@ -55,7 +56,8 @@ const CustomEditor = ({ scheduler }: CustomEditorProps) => {
             start: scheduler.state.start.value,
             end: scheduler.state.end.value,
             description: state.description,
-            urgency: state.urgency
+            urgency: state.urgency,
+            status: state.status
           });
         }, 3000);
       })) as ProcessedEvent;
@@ -99,25 +101,30 @@ const CustomEditor = ({ scheduler }: CustomEditorProps) => {
   );
 };
 
+interface CustomSchedulerProps{
+events:[]
+}
 
+const CustomScheduler: React.FC<CustomSchedulerProps> = ({events}) => {
+  const [events2, setEvents] = useState([
+    {
+      event_id: 1,
+      title: "Event 1",
+      start: new Date("2023/5/22, 09:00"),
+      end: new Date("2023/5/22 9:00"),
+    },
+    {
+      event_id: 5,
+    title: 'Internet',
+    start: new Date ('2023/5/31 8:30'),
+    end: new Date('2023/5/31 9:30'),
+    description: 'Slow internet'
+    },
+  ]);
 
-const CustomScheduler =() => {
-    
   return (
-    <Scheduler events={[
-        {
-          event_id: 1,
-          title: "Event 1",
-          start: new Date("2023/5/22 09:30"),
-          end: new Date("2023/5/22 10:30"),
-        },
-        {
-          event_id: 2,
-          title: "Event 2",
-          start: new Date("2023/5/23 10:00"),
-          end: new Date("2023/5/23 11:00"),
-        },
-      ]}
+    <Scheduler
+      events={events}
       customEditor={(scheduler) => <CustomEditor scheduler={scheduler} />}
       viewerExtraComponent={(fields, event) => {
         return (
@@ -125,11 +132,13 @@ const CustomScheduler =() => {
             <p>Useful to render custom fields...</p>
             <p>Description: {event.description || "Nothing..."}</p>
             <p>Urgency: {event.urgency || "Nothing..."}</p>
+            <p>Status: {event.status || "Nothing..."}</p>
           </div>
         );
       }}
     />
   );
-}
+};
+
 
 export default CustomScheduler;

@@ -1,13 +1,13 @@
 
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { getServerSession } from "next-auth";
-import { AppointmentHandler } from "./appointmentHandler";
 import { ServiceProvider } from "@/app/ServiceProvider/ServiceProvider";
 import { Scheduler } from "@aldabil/react-scheduler";
 import { Key } from "react";
+import { AdminAppointmentHandler } from "./adminAppointmentHandler";
 // other import statements...
 
-export default async function engergyTracking() {
+export default async function AdminAppointment() {
 //   // Fetch user using Prisma based on session ID
   const session = await getServerSession(authOptions);
   const userId = session?.user?.email; // Replace with your session ID retrieval log
@@ -37,7 +37,7 @@ export default async function engergyTracking() {
 
 // Await the asynchronous function to get the array of user posts
   async function getUserEnergy() {
-    const res = await fetch('http://localhost:3000/api/user/' + user_Id + '/appointment/userAppointment', {
+    const res = await fetch('http://localhost:3000/api/user/' + user_Id + '/appointment', {
       method: 'GET',
       headers: {
         'Cache-Control': 'no-cache' // or other cache control directives
@@ -84,7 +84,7 @@ export default async function engergyTracking() {
     <div>
     Appointment Page
         </div>
-        <AppointmentHandler user_Id={user_Id} email={email} userPosts={userAppointment} events={events}/>
+        <AdminAppointmentHandler user_Id={user_Id} email={email} userPosts={userAppointment} events={events}/>
        
         
     </>
