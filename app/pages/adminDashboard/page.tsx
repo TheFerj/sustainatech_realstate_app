@@ -6,6 +6,8 @@ import { getServerSession } from "next-auth";
 import { PostConcern } from "../concernPage/concernForm";
 
 import { LogoutButton } from "@/app/auth";
+import { ServiceProvider } from "@/app/ServiceProvider/ServiceProvider";
+
 
 
 
@@ -28,7 +30,13 @@ export default async function AdminDashboard() {
   }
   const users = await getUserData();
   const user_Id = users.id;
-  const email = users.email;
+  const email = users.name!;
+  let services = new ServiceProvider()
+  console.log(services.appointmentManager)
+  const appointment = await services.appointmentManager.createAppointment({userId:userId})
+  console.log('-----------------')
+  console.log(appointment.email)
+  console.log('-----------------')
 
   async function getUserPosts() {
     const res = await fetch('http://localhost:3000/api/user/' + user_Id + '/post/userPost', {

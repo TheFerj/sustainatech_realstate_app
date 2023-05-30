@@ -1,7 +1,7 @@
 export interface IAppointmentManager { 
 // functionality subject to change
 
- createAppointment():void;
+ createAppointment({ userId }: { userId: string }):void;
  updateAppointment():void;
  generateAppointmentTicket():void;
 
