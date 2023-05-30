@@ -3,6 +3,7 @@ import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { getServerSession } from "next-auth";
 import { AppointmentHandler } from "./appointmentHandler";
 import { ServiceProvider } from "@/app/ServiceProvider/ServiceProvider";
+import { Scheduler } from "@aldabil/react-scheduler";
 // other import statements...
 
 export default async function engergyTracking() {
@@ -58,6 +59,7 @@ export default async function engergyTracking() {
     Appointment Page
         </div>
         <AppointmentHandler user_Id={user_Id} email={email} userPosts={userAppointment} />
+       
         
     </>
   

@@ -12,6 +12,9 @@
     "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
   },
   "dependencies": {
+    "@aldabil/react-scheduler": "^2.7.10",
+    "@emotion/react": "^11.11.0",
+    "@emotion/styled": "^11.11.0",
     "@prisma/client": "^4.14.1",
     "@radix-ui/react-label": "^2.0.1",
     "@types/node": "^18.16.16",
@@ -29,6 +32,7 @@
     "next": "^13.4.3-canary.1",
     "next-auth": "^0.0.0-pr.6777.c5550344",
     "react": "18.2.0",
+    "react-calendar": "^4.2.1",
     "react-datepicker": "^4.11.0",
     "react-dom": "18.2.0",
     "tailwind-merge": "^1.10.0",
