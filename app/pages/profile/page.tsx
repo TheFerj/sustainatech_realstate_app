@@ -1,3 +1,5 @@
+import { getUserData2 } from "@/app/Data Models/GetUserData";
+import { Admin } from "@/app/Data Models/admin";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 
 import { getServerSession } from "next-auth";
@@ -23,14 +25,17 @@ return res.json();
   }
 
 
-  const users = await getUSerData();
-  const email = users?.email;
-  const name = users?.name;
+  
+  const users = await getUserData2({userId:userId});
+  const admin = new Admin(users.name,users.email,users.location,users.password)
+  const email = admin.email;
+  const name = admin.name;
   const business_name = users?.business_name;
   const business_type = users?.business_type;
   const location = users?.location;
   const contact_number = users?.contact_number;
   console.log('----------data---------')
+  console.log(admin.name)
   console.log(users)
   console.log('----------data---------')
   return (
