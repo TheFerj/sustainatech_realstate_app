@@ -126,7 +126,7 @@ export const ProfileForm: React.FC<ProfileFormProps> = ({
         />
       </div> */}
       <div className="grid w-full items-center gap-1.5">
-        <Label htmlFor="password">Address</Label>
+        <Label htmlFor="password">Location</Label>
         <Input
           className="w-full"
           required
@@ -136,9 +136,9 @@ export const ProfileForm: React.FC<ProfileFormProps> = ({
           type="Address"
         />
       </div>
-<Label htmlFor="email">Bussines Type</Label>
+<Label htmlFor="email">Business Type</Label>
 <select id="business_type" className="bg-gray-50 border border-green-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" onChange={(e) => setBusiness_type((e.target as HTMLSelectElement).value)}>
-  <option selected>Choose a country</option>
+  <option selected>Choose a Business Type</option>
   <option value="Manufacturing and Industrial businesses">Manufacturing and Industrial businesses</option>
   <option value="Residential Businesses">Residential Businesses</option>
   <option value="Foodservice and Hospitality businesses">Foodservice and Hospitality businesses</option>

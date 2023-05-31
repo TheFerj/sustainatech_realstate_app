@@ -15,7 +15,7 @@ export const Form = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
-
+  const [loading, setLoading] = useState(true);
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     try {
@@ -27,8 +27,11 @@ export const Form = () => {
       })
       console.log('Res', res)
       if (!res?.error) {
-        router.push(callbackUrl || '/pages/dashboard')
-
+        router.push(callbackUrl || '/')
+        setLoading(false)
+      }
+      if (loading) {
+        return <div>Loading...</div>; // Render a loading indicator or component
       } else {
         setError('Invalid email or password')
       }

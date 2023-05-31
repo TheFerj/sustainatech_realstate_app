@@ -2,13 +2,12 @@
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { getServerSession } from "next-auth";
 import { EnergyTrackingHandler } from "./energyTrackingHandler";
-import { ServiceProvider } from "./serviceProvider";
 // other import statements...
 
 export default async function engergyTracking() {
 //   // Fetch user using Prisma based on session ID
   const session = await getServerSession(authOptions);
-  const userId = session?.user?.email; // Replace with your session ID retrieval log
+  const userId = session?.user?.email; 
 
   async function getUserData() {
     const res = await fetch("http://localhost:3000/api/user/" + userId, {

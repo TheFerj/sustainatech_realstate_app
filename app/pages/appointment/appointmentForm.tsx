@@ -1,6 +1,7 @@
 'use client'
 
 
+import { ServiceProvider } from '@/app/ServiceProvider/ServiceProvider';
 import { Input } from '@/components/ui/input';
 import React, { useState } from 'react';
 import 'react-datepicker/dist/react-datepicker.css';
@@ -20,6 +21,7 @@ export const PostAppointment: React.FC<PostAppointmentFormProps> = ({ id, email 
   
     return formattedDateString;
   }
+
     const [issue, setIssue] = useState('');
     const [description, setDescription] = useState('');
     const [prefferedDate, setPrefferedDate] = useState('');
@@ -28,40 +30,33 @@ export const PostAppointment: React.FC<PostAppointmentFormProps> = ({ id, email 
     const [prefferedTime, setPrefferedTime] = useState('');
     const formattedDate = formatDate(prefferedDate,prefferedTime);
     const [error, setError] = useState<string | null>(null);
+    const userId = Number.isNaN(id) ? 0 : Number(id);
 
-
+    let services = new ServiceProvider()
     const onSubmit = async (e: React.FormEvent) => {
       e.preventDefault();
   
       try {
-        const res = await fetch('/api/user/'+{email}+'/appointment', {
-          method: 'POST',
-          body: JSON.stringify({
-            issue,
-            description,
-            prefferedDate:formattedDate,
-            location,
-            contact,
-            userId: id
-          }),
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        });
-  
-        if (!res.ok) {
-          throw new Error('Failed to post concern');
-        }
+        // services.appointmentManager.updateAppointment({id:'59'},{userId:7},{issue:'issue10'},{description:'asdasdas'},{prefferedDate:"2023-05-25T10:00:00.000Z"},{location:"cpu"},{contact:"098112"})
+  services.appointmentManager.createAppointment({userId:userId},{issue:issue},{description:description},{prefferedDate:formattedDate},{location:location},{contact:contact})
   
         // Reset form values
-        
+        setIssue('')
+        setDescription('')
+        setContact('')
+        setPrefferedDate('')
+        setPrefferedTime('')
         setError(null);
+        console.log('submitted')
       } catch (error: any) {
         setError(error?.message);
       }
     };
   console.log(prefferedTime)
   console.log(formattedDate)
+  
+  // let service = new ServiceProvider()
+  // service.appointmentManager.createAppointment({userId:7},{issue:'issue'},{description:'asdasdas'},{prefferedDate:"2023-05-25T10:00:00.000Z"},{location:"cpu"},{contact:"098112"})
     return (
       <>
 

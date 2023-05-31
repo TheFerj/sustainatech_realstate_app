@@ -25,9 +25,6 @@ export const AppointmentHandler: React.FC<AppointmentHandlerProps> =  ({user_Id,
     <>
     <div className="grid w-full items-center justify-center">
       <AppointmentModal id={user_Id} email={email} />
-      NEW
-      <CustomScheduler events={events}/>
-      NEW
       
       {userPosts.reverse().map((post: { id: Key; issue: string; description: string; prefferedDate:string; ActualDate:string; location:string; contact:string; status:string;}) => (
         <>

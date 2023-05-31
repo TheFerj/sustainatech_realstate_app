@@ -1,10 +1,7 @@
 "use client"
 
-import { LogoutButton } from '@/app/auth';
+
 import React, { Key } from 'react'
-
-
-import { Scheduler } from '@aldabil/react-scheduler';
 import CustomScheduler from '../appointment/custonScheduler';
 
 
@@ -25,9 +22,9 @@ export const AdminAppointmentHandler: React.FC<AdminAppointmentHandlerProps> =  
   return (
     <>
     <div className="grid w-full items-center justify-center">
-      NEW
+    
       <CustomScheduler events={events}/>
-      NEW
+  
     
     
   </div>

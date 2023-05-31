@@ -2,13 +2,7 @@ import { JSXElementConstructor, Key, ReactElement, ReactFragment, ReactPortal, u
 
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { getServerSession } from "next-auth";
-
-import { PostConcern } from "../concernPage/concernForm";
-
 import { LogoutButton } from "@/app/auth";
-import { ServiceProvider } from "@/app/ServiceProvider/ServiceProvider";
-import { Admin } from "@/app/Data Models/admin";
-import { UserModel } from "@/app/Data Models/user";
 import { getUserData2 } from "@/app/Data Models/GetUserData";
 
 
@@ -34,14 +28,8 @@ export default async function AdminDashboard() {
   const users = await getUserData();
   const user_Id = users.id;
   const email = users.name!;
-  let services = new ServiceProvider()
-  console.log(services.appointmentManager)
-  const appointment = await services.appointmentManager.createAppointment({userId:userId})
-  console.log('-----------------')
-  console.log(appointment.email)
-  console.log('-----------------')
+  
   const UserData = await getUserData2({userId:userId});
-  console.log(UserData.email)
 
   async function getUserPosts() {
     const res = await fetch('http://localhost:3000/api/user/' + user_Id + '/post/userPost', {
@@ -66,15 +54,7 @@ export default async function AdminDashboard() {
         content: post.content,
       }));
 
-      function formatDate(dateString: string): string {
-        const date = new Date(dateString);
-        const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-        const month = months[date.getMonth()];
-        const day = date.getDate();
-        const year = date.getFullYear();
-      
-        return `${month} ${day} ${year}`;
-      }
+
   return (
     
     <div className="grid w-full items-center justify-center">
@@ -90,8 +70,8 @@ export default async function AdminDashboard() {
     <p className="font-normal text-gray-700 dark:text-gray-400">page for tenant classification</p>
 </a>
 <a href="./adminAppointments" className="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
-    <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Tenant Classification List</h5>
-    <p className="font-normal text-gray-700 dark:text-gray-400">page for tenant classification</p>
+    <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Appointment</h5>
+    <p className="font-normal text-gray-700 dark:text-gray-400">page for Appointment</p>
 </a>
       
 </div>

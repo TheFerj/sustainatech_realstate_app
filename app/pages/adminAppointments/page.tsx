@@ -1,8 +1,6 @@
 
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { getServerSession } from "next-auth";
-import { ServiceProvider } from "@/app/ServiceProvider/ServiceProvider";
-import { Scheduler } from "@aldabil/react-scheduler";
 import { Key } from "react";
 import { AdminAppointmentHandler } from "./adminAppointmentHandler";
 // other import statements...
@@ -65,9 +63,11 @@ export default async function AdminAppointment() {
     const formattedDate = `${year}/${month}/${day} ${hour}:${minute.toString().padStart(2, '0')}`;
     return formattedDate;
   }
-  const events: { event_id: Key; title: string; start: Date; end: Date; description:string }[] = [];
+  const events: { event_id: Key; title: string; start: Date; end: Date; description:string; editable:boolean; deletable: boolean;
+    draggable: boolean; }[] = [];
   const userAppointment = await getUserEnergy();
-  userAppointment.forEach((post: { id: Key; issue: string; description: string; prefferedDate:string; ActualDate:string; location:string; contact:string; status:string;}) => {
+  userAppointment.forEach((post: { id: Key; issue: string; description: string; prefferedDate:string; ActualDate:string; location:string; contact:string; status:string; editable: boolean;deletable: boolean;
+    draggable: boolean;}) => {
     
     const formattedDate = formatDate(post.prefferedDate)
     events.push({
@@ -75,7 +75,11 @@ export default async function AdminAppointment() {
       title: post.issue,
       start: new Date(formattedDate),
       end: new Date(formattedDate),
-      description:post.description
+      description:post.description,
+      editable: false,
+      deletable:false,
+      draggable:false
+
     });
   });
   console.log(events)
