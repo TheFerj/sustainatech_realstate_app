@@ -18,7 +18,6 @@ export default async function RootLayout({
     <html lang="en">
       <body>
         <NavBar role={userData}/>
-        {userData}
         <Providers>{children}</Providers>
       </body>
     </html>

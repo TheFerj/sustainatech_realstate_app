@@ -1,8 +1,7 @@
-"use client"
 
 
 import React, { Key } from 'react'
-import CustomScheduler from '../appointment/custonScheduler';
+import CustomScheduler from './custonScheduler';
 
 
 

@@ -74,10 +74,10 @@ export const ApplianceView: React.FC<ViewConcernFormProps> = ({
         >
           <div className="relative bg-white rounded-lg shadow p-6">
             <h3 className="text-xl font-semibold mb-4">Details</h3>
-            <h3 className="text-l font-semibold mb-4">Date: {type}</h3>
-            <h3 className="text-l font-semibold mb-4">Title: {brand}</h3>
-            <h3 className="text-l font-semibold mb-4">Concern: {energy_rating}</h3>
-            <h3 className="text-l font-semibold mb-4">Urgency: {model}</h3>
+            <h3 className="text-l font-semibold mb-4">Type: {type}</h3>
+            <h3 className="text-l font-semibold mb-4">Brand: {brand}</h3>
+            <h3 className="text-l font-semibold mb-4">Energy Rating: {energy_rating}</h3>
+            <h3 className="text-l font-semibold mb-4">Model: {model}</h3>
             <div className="flex justify-end">
               <button
                 type="button"

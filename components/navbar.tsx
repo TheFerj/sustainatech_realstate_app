@@ -1,3 +1,4 @@
+import { LogoutButton } from '@/app/auth';
 import Link from 'next/link';
 
 interface NavbarProps {
@@ -7,7 +8,26 @@ interface NavbarProps {
 export const NavBar: React.FC<NavbarProps> = ({ role }) => {
   return (
     <>
-      <nav className="bg-green-400 border-gray-200 dark:bg-gray-900">
+    {role != null ? (
+                <>
+                <nav className="bg-green-400 border-gray-200 dark:bg-gray-900">
+        <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl p-4">
+          <Link legacyBehavior href="/">
+            <a className="flex items-center">
+              <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Sustainatech</span>
+            </a>
+          </Link>
+          <div className="flex items-center">
+            <a href="tel:5541251234" className="mr-6 text-sm text-gray-500 dark:text-white hover:underline">(330) 331-234</a>
+           <LogoutButton/>
+          </div>
+        </div>
+      </nav>
+                </>
+                
+              ) : (
+                <>
+            <nav className="bg-green-400 border-gray-200 dark:bg-gray-900">
         <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl p-4">
           <Link legacyBehavior href="/">
             <a className="flex items-center">
@@ -22,6 +42,9 @@ export const NavBar: React.FC<NavbarProps> = ({ role }) => {
           </div>
         </div>
       </nav>
+                </>
+              )}
+
       <nav className="bg-green-100 dark:bg-gray-700">
         <div className="max-w-screen-xl px-4 py-3 mx-auto">
           <div className="flex items-center">
@@ -60,6 +83,8 @@ export const NavBar: React.FC<NavbarProps> = ({ role }) => {
                 </li>
                 </>
               )}
+              
+              
             </ul>
           </div>
         </div>

@@ -1,7 +1,7 @@
 export interface IConcernClassification {
 // functions subject to change
 
-showConcernList():void;
+showConcernList({ userId }: { userId: any }):void;
 classifyConcern():void;
 
 }

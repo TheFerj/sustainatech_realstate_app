@@ -49,6 +49,7 @@ export const AdminConcernHandler: React.FC<ConcernHandlerProps> = ({
             <option value="low">Low</option>
           </select>
         </div>
+        
         {sortedPosts.reverse().map((post: { id: Key; title: string; content: string; createdAt: string; type: string; urgency: string }) => (
           <div key={post.id}>
             <AdminConcernView id={user_Id} concern={post.content} title={post.title} createdAt={formatDate(post.createdAt)} type={post.type} urgency={post.urgency} />

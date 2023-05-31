@@ -1,8 +1,6 @@
-
-'use client'
+"use client"
 
 import { useState } from 'react';
-
 
 interface AdminConcernProps {
   id: string;
@@ -22,8 +20,6 @@ export const AdminConcernView: React.FC<AdminConcernProps> = ({
   urgency,
 }) => {
   const [isClicked, setIsClicked] = useState(false);
-
-
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const toggleModal = () => {
@@ -32,46 +28,42 @@ export const AdminConcernView: React.FC<AdminConcernProps> = ({
 
   return (
     <>
-      <div className="relative overflow-x-auto">
-        <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-          <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-            <tr>
-              <th scope="col" className="px-6 py-3">
-                Title
-              </th>
-              <th scope="col" className="px-6 py-3">
-                Concern
-              </th>
-              <th scope="col" className="px-6 py-3">
-                Date
-              </th>
-              <th scope="col" className="px-6 py-3">
-                Type
-              </th>
-              <th scope="col" className="px-6 py-3">
-                Urgency
-              </th>
-              <th scope="col" className="px-6 py-3">
-                Status
-              </th>
-            </tr>
-          </thead>
-          <tbody onClick={toggleModal} className={isClicked ? "cursor-pointer bg-gray-200" : "cursor-pointer"}>
-            <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-              <th
-                scope="row"
-                className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-              >
-                {title}
-              </th>
-              <td className="px-6 py-4">{concern}</td>
-              <td className="px-6 py-4">{createdAt}</td>
-              <td className="px-6 py-4">{type}</td>
-              <td className="px-6 py-4">{urgency}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+      <table>
+        <thead className=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+          <tr>
+            <th scope="col" className="px-10 py-3">
+              Title
+            </th>
+            <th scope="col" className="px-10 py-3">
+              Concern
+            </th>
+            <th scope="col" className="px-10 py-3">
+              Date
+            </th>
+            <th scope="col" className="px-10 py-3">
+              Type
+            </th>
+            <th scope="col" className="px-10 py-3">
+              Urgency
+            </th>
+            <th scope="col" className="px-10 py-3">
+              Status
+            </th>
+          </tr>
+        </thead>
+        <tbody onClick={toggleModal} className={isClicked ? "cursor-pointer bg-gray-200" : "cursor-pointer"}>
+          <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+            <td className="pl-5 w-1/4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+              {title}
+            </td>
+            <td className="px-10 py-3">{concern}</td>
+            <td className="px-10 py-3">{createdAt}</td>
+            <td className="px-10 py-3">{type}</td>
+            <td className="px-10 py-3">{urgency}</td>
+          </tr>
+        </tbody>
+      </table>
+
       {isModalOpen && (
         <div
           id="staticModal"
@@ -98,7 +90,8 @@ export const AdminConcernView: React.FC<AdminConcernProps> = ({
               </button>
             </div>
           </div>
-        </div>)}
+        </div>
+      )}
     </>
   );
 };

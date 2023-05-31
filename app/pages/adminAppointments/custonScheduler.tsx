@@ -7,6 +7,7 @@ import type {
   ProcessedEvent,
   SchedulerHelpers
 } from "@aldabil/react-scheduler/types";
+import AdminAppointmentModal from "./adminAppointmentModal";
 
 interface CustomEditorProps {
   scheduler: SchedulerHelpers;
@@ -20,6 +21,7 @@ const CustomEditor = ({ scheduler }: CustomEditorProps) => {
     description: event?.description || "",
     urgency: event?.urgency || "",
     status: event?.status || "",
+    issue: event?.description || "",
   });
   const [error, setError] = useState("");
 
@@ -42,13 +44,7 @@ const CustomEditor = ({ scheduler }: CustomEditorProps) => {
 
       /**Simulate remote data saving */
       const added_updated_event = (await new Promise((res) => {
-        /**
-         * Make sure the event have 4 mandatory fields
-         * event_id: string|number
-         * title: string
-         * start: Date|string
-         * end: Date|string
-         */
+
         setTimeout(() => {
           res({
             event_id: event?.event_id || Math.random(),
@@ -57,7 +53,8 @@ const CustomEditor = ({ scheduler }: CustomEditorProps) => {
             end: scheduler.state.end.value,
             description: state.description,
             urgency: state.urgency,
-            status: state.status
+            status: state.status,
+            issue:state.description
           });
         }, 3000);
       })) as ProcessedEvent;
@@ -72,26 +69,6 @@ const CustomEditor = ({ scheduler }: CustomEditorProps) => {
     <div>
       <div style={{ padding: "1rem" }}>
         <p>Load your custom form/fields</p>
-        <TextField
-          label="Title"
-          value={state.title}
-          onChange={(e) => handleChange(e.target.value, "title")}
-          error={!!error}
-          helperText={error}
-          fullWidth
-        />
-        <TextField
-          label="Description"
-          value={state.description}
-          onChange={(e) => handleChange(e.target.value, "description")}
-          fullWidth
-        />
-        <TextField
-          label="Urgency"
-          value={state.urgency}
-          onChange={(e) => handleChange(e.target.value, "urgency")}
-          fullWidth
-        />
       </div>
       <DialogActions>
         <Button onClick={scheduler.close}>Cancel</Button>
@@ -121,7 +98,6 @@ const CustomScheduler: React.FC<CustomSchedulerProps> = ({events}) => {
     description: 'Slow internet'
     },
   ]);
-
   return (
     <Scheduler
       events={events}
@@ -129,10 +105,12 @@ const CustomScheduler: React.FC<CustomSchedulerProps> = ({events}) => {
       viewerExtraComponent={(fields, event) => {
         return (
           <div>
-            <p>Useful to render custom fields...</p>
-            <p>Description: {event.description || "Nothing..."}</p>
+            <p>Appointment Details</p>
+            <p>Description: {event.event_id || "Nothing..."}</p>
             <p>Urgency: {event.urgency || "Nothing..."}</p>
-            <p>Status: {event.status || "Nothing..."}</p>
+            <p>Status: {event.issue || "Nothings..."}</p>
+            new
+            <AdminAppointmentModal id={'7'} email={"dav@gmail.com"} appointmentDescriptions={event.description} appointmentIssue={event.tittle}/>
           </div>
         );
       }}

@@ -5,7 +5,7 @@ import React, { Key } from 'react'
 import AppointmentModal from './appointmentModal';
 import { ViewAppointment } from './appointmentView';
 import { Scheduler } from '@aldabil/react-scheduler';
-import CustomScheduler from './custonScheduler';
+import CustomScheduler from '../adminAppointments/custonScheduler';
 
 
 

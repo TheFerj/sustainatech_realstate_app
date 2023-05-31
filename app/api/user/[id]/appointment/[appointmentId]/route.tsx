@@ -15,3 +15,21 @@ export async function PATCH(
     })
     return NextResponse.json(updated)
   } 
+
+  export async function GET(request: Request, { params }: { params: { appointmentId: string } }) {
+    const id = params.appointmentId;
+    const user = await prisma.appointment.findUnique({
+      where: {
+        id: parseInt(id,10),
+      },
+    });
+  
+    const headers = new Headers();
+    headers.append('Cache-Control', 'no-cache'); // Add cache control header to disable caching
+  
+    return new Response(JSON.stringify(user), {
+      headers,
+      status: 200,
+      statusText: 'OK',
+    });
+  }

@@ -1,8 +1,8 @@
 import { LogoutButton } from '@/app/auth';
 import React, { Key } from 'react'
-import ConcernModal from './deleteModal';
 import { ViewConcern } from './concernView';
 import { formatDate } from './formatDateFunction';
+import ConcernModal from './ConcernModal';
 
 
 
@@ -10,19 +10,25 @@ import { formatDate } from './formatDateFunction';
 interface ConcernHandlerProps{
     user_Id: string;
     email: string;
-    userPosts: [];
+    userConcerns: [];
 }
 
 
 
-export const ConcernHandler: React.FC<ConcernHandlerProps> =  ({user_Id,email,userPosts}) => {
+export const ConcernHandler: React.FC<ConcernHandlerProps> =  ({user_Id,email,userConcerns}) => {
+  if (userConcerns.length === 0) {
+   
+    return(
+      <><ConcernModal id={user_Id} email={email} /><div>No data available</div></>
+      );
+      
+  }
 
   return (
     <>
     <div className="grid w-full items-center justify-center">
-      <LogoutButton/>
       <ConcernModal id={user_Id} email={email} />
-    {userPosts.reverse().map((post: { id: Key; title: string; content: string; createdAt:string; type:string; urgency:string;}) => (
+    {userConcerns.reverse().map((post: { id: Key; title: string; content: string; createdAt:string; type:string; urgency:string;}) => (
         <>
       <div key={post.id}>
         <ViewConcern id={user_Id} concern={post.content} title={post.title} createdAt={formatDate(post.createdAt)} type={post.type} urgency={post.urgency} />
