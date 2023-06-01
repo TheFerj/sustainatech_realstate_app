@@ -54,6 +54,11 @@ export const PostAppointment: React.FC<PostAppointmentFormProps> = ({ id, email 
     };
   console.log(prefferedTime)
   console.log(formattedDate)
+  const dateString = 'Thu Jun 01 2023 06:27:59 GMT+0800';
+const date = new Date(dateString);
+
+const convertedDateString = date.toISOString();
+console.log(convertedDateString);
   
   // let service = new ServiceProvider()
   // service.appointmentManager.createAppointment({userId:7},{issue:'issue'},{description:'asdasdas'},{prefferedDate:"2023-05-25T10:00:00.000Z"},{location:"cpu"},{contact:"098112"})

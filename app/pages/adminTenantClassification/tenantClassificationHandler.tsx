@@ -28,12 +28,7 @@ export const TenantClassificationHandler: React.FC<TenantClassificationHandlerPr
   const [sortedPosts, setSortedPosts] = useState([...userPosts]);
   const [selectedBusinessType, setSelectedBusinessType] = useState('');
 
-  const sortList = () => {
-    const sorted = [...sortedPosts].sort((a, b) =>
-      b.business_type.localeCompare(a.business_type)
-    );
-    setSortedPosts(sorted);
-  };
+  
 
   const filterByBusinessType = () => {
     if (selectedBusinessType === '') {
@@ -62,7 +57,30 @@ export const TenantClassificationHandler: React.FC<TenantClassificationHandlerPr
             <option value="Construction and Building businesses">Construction and Building businesses</option>
           </select>
         </div>
-        <button onClick={sortList}>Sort by Business Type</button>
+        <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+        <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <tr>
+              <th scope="col" className="px-6 py-3"style={{ width: "200px", height: "100px" }}>
+                Name
+              </th>
+              <th scope="col" className="px-6 py-3"style={{ width: "200px", height: "100px" }}>
+                Email
+              </th>
+              <th scope="col" className="px-6 py-3"style={{ width: "200px", height: "100px" }}>
+                Business Name
+              </th>
+              <th scope="col" className="px-6 py-3"style={{ width: "200px", height: "100px" }}>
+                Business Type
+              </th>
+              <th scope="col" className="px-6 py-3"style={{ width: "200px", height: "100px" }}>
+                Location
+              </th>
+              <th scope="col" className="px-6 py-3"style={{ width: "200px", height: "100px" }}>
+                Contact
+              </th>
+            </tr>
+          </thead>
+          </table>
         {filterByBusinessType().reverse().map((post: { id: Key; issue: string; email: string; role: string; name: string; location: string; business_name: string; business_type: string; contact_number: string }) => (
           <div key={post.id}>
             <TenantClassificationView

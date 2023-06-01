@@ -39,16 +39,40 @@ export const AdminConcernHandler: React.FC<ConcernHandlerProps> = ({
   return (
     <>
       <div className="grid w-full items-center justify-center">
-        <LogoutButton />
+      <h3 className="justify-center"> Tenant Concerns</h3>
         <div>
           <label htmlFor="sortOption">Sort by:</label>
           <select id="sortOption" value={sortOption} onChange={handleSortChange}>
-            <option value="default">Default</option>
-            <option value="high">High</option>
+            <option value="high">Default</option>
+            <option value="default">High</option>
             <option value="medium">Medium</option>
             <option value="low">Low</option>
           </select>
         </div>
+        <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+      <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <tr>
+              <th scope="col" className="px-6 py-3"style={{ width: "200px", height: "30px" }}>
+                Title
+              </th>
+              <th scope="col" className="px-6 py-3"style={{ width: "200px", height: "30px" }}>
+                Concern
+              </th>
+              <th scope="col" className="px-6 py-3"style={{ width: "200px", height: "30px" }}>
+                Date
+              </th>
+              <th scope="col" className="px-6 py-3"style={{ width: "200px", height: "30px" }}>
+                Type
+              </th>
+              <th scope="col" className="px-6 py-3" style={{ width: "200px", height: "30px" }}>
+                Urgency
+              </th>
+              <th scope="col" className="px-6 py-3" style={{ width: "200px", height: "30px" }}>
+                Status
+              </th>
+            </tr>
+          </thead>
+          </table>
         
         {sortedPosts.reverse().map((post: { id: Key; title: string; content: string; createdAt: string; type: string; urgency: string }) => (
           <div key={post.id}>

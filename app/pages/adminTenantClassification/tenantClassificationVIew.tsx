@@ -40,28 +40,7 @@ export const TenantClassificationView: React.FC<ViewAppointmentFormProps> = ({
     <>
       <div className="relative overflow-x-auto">
         <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-          <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-            <tr>
-              <th scope="col" className="px-6 py-3">
-                Name
-              </th>
-              <th scope="col" className="px-6 py-3">
-                Email
-              </th>
-              <th scope="col" className="px-6 py-3">
-                Business Name
-              </th>
-              <th scope="col" className="px-6 py-3">
-                Business Type
-              </th>
-              <th scope="col" className="px-6 py-3">
-                Location
-              </th>
-              <th scope="col" className="px-6 py-3">
-                Contact
-              </th>
-            </tr>
-          </thead>
+          
           <tbody onClick={toggleModal} className={isClicked ? "cursor-pointer bg-gray-200" : "cursor-pointer"}>
             <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
               <th
@@ -70,11 +49,11 @@ export const TenantClassificationView: React.FC<ViewAppointmentFormProps> = ({
               >
                 {name}
               </th>
-              <td className="px-6 py-4">{email}</td>
-              <td className="px-6 py-4">{business_name}</td>
-              <td className="px-6 py-4">{business_type}</td>
-              <td className="px-6 py-4">{location}</td>
-              <td className="px-6 py-4">{contact_number}</td>
+              <td className="px-6 py-4" style={{ width: "200px", height: "100px" }}>{email}</td>
+              <td className="px-6 py-4" style={{ width: "200px", height: "100px" }}>{business_name}</td>
+              <td className="px-6 py-4" style={{ width: "200px", height: "100px" }}>{business_type}</td>
+              <td className="px-6 py-4" style={{ width: "200px", height: "100px" }}>{location}</td>
+              <td className="px-6 py-4" style={{ width: "200px", height: "100px" }}>{contact_number}</td>
             </tr>
           </tbody>
         </table>

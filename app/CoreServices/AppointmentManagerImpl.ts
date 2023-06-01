@@ -5,6 +5,21 @@ export class AppointmentManager implements IAppointmentManager {
   generateAppointmentTicket(): void {
     throw new Error("Method not implemented.");
 }
+async showAppointment({ userId }: { userId: any }) {
+        
+  const res = await fetch('http://localhost:3000/api/user/' + userId + '/appointment/userAppointment', {
+      method: 'GET',
+      headers: {
+        'Cache-Control': 'no-cache' // or other cache control directives
+      }
+    });
+
+    if (!res.ok) {
+      throw new Error('Failed to fetch data');
+    }
+
+    return res.json();
+  }
 
 
 async updateAppointment({id}:{id:string},
@@ -15,7 +30,6 @@ async updateAppointment({id}:{id:string},
   { location }: { location: any },
   { contact }: { contact: any }
 ) {
-  // Replace with your session ID retrieval logic
   try {
     const res = await fetch(`/api/user/${userId}/appointment/`+id, {
       method: 'PATCH',
@@ -35,8 +49,6 @@ async updateAppointment({id}:{id:string},
     if (!res.ok) {
       throw new Error('Failed to post concern');
     }
-
-    // Reset form values
     
   } catch (error: any) {
 
@@ -50,7 +62,6 @@ async updateAppointment({id}:{id:string},
     { location }: { location: any }= { location: null },
     { contact }: { contact: any }= { contact: null }
   ) {
-    // Replace with your session ID retrieval logic
     try {
       const res = await fetch(`/api/user/${userId}/appointment`, {
         method: 'POST',
@@ -70,8 +81,6 @@ async updateAppointment({id}:{id:string},
       if (!res.ok) {
         throw new Error('Failed to post concern');
       }
-
-      // Reset form values
       
     } catch (error: any) {
   

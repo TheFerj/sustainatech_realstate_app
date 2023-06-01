@@ -61,8 +61,8 @@ export default async function TeanantClassificationPage() {
   const userConcerns= await getUserWall();
   return (
     <>
-    <div className="columns-1">
-        tenant classification list
+    <div className="columns-1 py-20">
+        
         <AdminConcernHandler user_Id={user_Id} email={userConcerns.email} userPosts={userConcerns}/>        
     </div>
     </>

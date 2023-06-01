@@ -29,37 +29,16 @@ export const AdminConcernView: React.FC<AdminConcernProps> = ({
   return (
     <>
       <table>
-        <thead className=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-          <tr>
-            <th scope="col" className="px-10 py-3">
-              Title
-            </th>
-            <th scope="col" className="px-10 py-3">
-              Concern
-            </th>
-            <th scope="col" className="px-10 py-3">
-              Date
-            </th>
-            <th scope="col" className="px-10 py-3">
-              Type
-            </th>
-            <th scope="col" className="px-10 py-3">
-              Urgency
-            </th>
-            <th scope="col" className="px-10 py-3">
-              Status
-            </th>
-          </tr>
-        </thead>
+        
         <tbody onClick={toggleModal} className={isClicked ? "cursor-pointer bg-gray-200" : "cursor-pointer"}>
           <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-            <td className="pl-5 w-1/4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-              {title}
+            <td className="pl-5 w-1/4 font-medium text-gray-900 whitespace-nowrap dark:text-white" style={{ width: "200px", height: "100px" }}>
+              {title} 
             </td>
-            <td className="px-10 py-3">{concern}</td>
-            <td className="px-10 py-3">{createdAt}</td>
-            <td className="px-10 py-3">{type}</td>
-            <td className="px-10 py-3">{urgency}</td>
+            <td className="px-6 py-3" style={{ width: "200px", height: "100px" }}>{concern}</td>
+            <td className="px-6 py-3" style={{ width: "200px", height: "100px" }}>{createdAt}</td>
+            <td className="px-6 py-3"style={{ width: "200px", height: "100px" }}>{type}</td>
+            <td className="px-6 py-3" style={{ width: "200px", height: "100px" }}>{urgency}</td>
           </tr>
         </tbody>
       </table>

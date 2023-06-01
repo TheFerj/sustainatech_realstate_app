@@ -8,6 +8,7 @@ export async function GET(request: Request) {
     const modifiedUsers = users.map(user => {
         return {
             id:user.id,
+            email:user.email,
             business_name:user.business_name,
             business_type:user.business_type,
             name: user.name,

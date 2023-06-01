@@ -26,15 +26,44 @@ export const ConcernHandler: React.FC<ConcernHandlerProps> =  ({user_Id,email,us
 
   return (
     <>
-    <div className="grid w-full items-center justify-center">
+    <div className="py-10 grid w-full items-center justify-center">
       <ConcernModal id={user_Id} email={email} />
-    {userConcerns.reverse().map((post: { id: Key; title: string; content: string; createdAt:string; type:string; urgency:string;}) => (
-        <>
+      <div className="py-">
+        
+      <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+      <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <tr>
+              <th scope="col" className="px-4 py-3"style={{ width: "200px", height: "30px" }}>
+                Title
+              </th>
+              <th scope="col" className="px-4 py-3"style={{ width: "200px", height: "30px" }}>
+                Concern
+              </th>
+              <th scope="col" className="px-4 py-3"style={{ width: "200px", height: "30px" }}>
+                Date
+              </th>
+              <th scope="col" className="px-4 py-3"style={{ width: "200px", height: "30px" }}>
+                Type
+              </th>
+              <th scope="col" className="px-4 py-3" style={{ width: "200px", height: "30px" }}>
+                Urgency
+              </th>
+              <th scope="col" className="px-4 py-3" style={{ width: "200px", height: "30px" }}>
+                Status
+              </th>
+            </tr>
+          </thead>
+          </table>
+    {userConcerns.reverse().map((post: { id: Key; title: string; content: string; createdAt:string; type:string; urgency:string; status:string;}) => (
+      
+      <>
       <div key={post.id}>
-        <ViewConcern id={user_Id} concern={post.content} title={post.title} createdAt={formatDate(post.createdAt)} type={post.type} urgency={post.urgency} />
-      </div></>
+        <ViewConcern id={user_Id} concern={post.content} title={post.title} createdAt={formatDate(post.createdAt)} type={post.type} urgency={post.urgency} status={post.status} />
+      </div>
+      </>
       
       ))}
+      </div>
     
     
   </div>

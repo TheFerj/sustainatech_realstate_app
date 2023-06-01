@@ -15,6 +15,7 @@ const AppointmentModal = ({ id, email }: AppointmentModalProps) => {
   const toggleModal = () => {
     setIsModalOpen(!isModalOpen);
   };
+  
 
   return (
     <>

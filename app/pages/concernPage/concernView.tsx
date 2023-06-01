@@ -11,6 +11,7 @@ interface ViewConcernFormProps {
   type: string;
   urgency: string;
   createdAt: string;
+  status:string;
 }
 
 export const ViewConcern: React.FC<ViewConcernFormProps> = ({
@@ -20,6 +21,7 @@ export const ViewConcern: React.FC<ViewConcernFormProps> = ({
   createdAt,
   type,
   urgency,
+  status
 }) => {
   const [isClicked, setIsClicked] = useState(false);
 
@@ -34,28 +36,7 @@ export const ViewConcern: React.FC<ViewConcernFormProps> = ({
     <>
       <div className="relative overflow-x-auto">
         <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-          <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-            <tr>
-              <th scope="col" className="px-6 py-3">
-                Title
-              </th>
-              <th scope="col" className="px-6 py-3">
-                Concern
-              </th>
-              <th scope="col" className="px-6 py-3">
-                Date
-              </th>
-              <th scope="col" className="px-6 py-3">
-                Type
-              </th>
-              <th scope="col" className="px-6 py-3">
-                Urgency
-              </th>
-              <th scope="col" className="px-6 py-3">
-                Status
-              </th>
-            </tr>
-          </thead>
+      
           <tbody onClick={toggleModal} className={isClicked ? "cursor-pointer bg-gray-200" : "cursor-pointer"}>
             <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
               <th
@@ -64,10 +45,16 @@ export const ViewConcern: React.FC<ViewConcernFormProps> = ({
               >
                 {title}
               </th>
-              <td className="px-6 py-4">{concern}</td>
-              <td className="px-6 py-4">{createdAt}</td>
-              <td className="px-6 py-4">{type}</td>
-              <td className="px-6 py-4">{urgency}</td>
+              <td className="px-6 py-4" style={{ width: "200px", height: "100px" }}>
+                {concern}
+                </td>
+                
+
+
+              <td className="px-6 py-4" style={{ width: "200px", height: "100px" }}>{createdAt}</td>
+              <td className="px-6 py-4" style={{ width: "200px", height: "100px" }}>{type}</td>
+              <td className="px-6 py-4" style={{ width: "200px", height: "100px" }}>{urgency}</td>
+              <td className="px-6 py-4" style={{ width: "200px", height: "100px" }}>{status}</td>
             </tr>
           </tbody>
         </table>
@@ -86,7 +73,7 @@ export const ViewConcern: React.FC<ViewConcernFormProps> = ({
             <h3 className="text-l font-semibold mb-4">Concern: {concern}</h3>
             <h3 className="text-l font-semibold mb-4">Urgency: {urgency}</h3>
             <h3 className="text-l font-semibold mb-4">Type: {type}</h3>
-            <h3 className="text-l font-semibold mb-4">Status: </h3>
+            <h3 className="text-l font-semibold mb-4">Status: {status}</h3>
             <h3 className="text-l font-semibold mb-4">Comment/Remarks: </h3>
             <div className="flex justify-end">
               <button

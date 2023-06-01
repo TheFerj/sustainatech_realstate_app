@@ -2,6 +2,7 @@
 'use client'
 
 import { useState } from 'react';
+import { formatDate } from '../adminAppointments/dateToString';
 
 
 interface ViewAppointmentFormProps {
@@ -36,35 +37,12 @@ export const ViewAppointment: React.FC<ViewAppointmentFormProps> = ({
     setIsModalOpen(!isModalOpen);
   };
 
+  const formattedDate = formatDate(prefferedDate)
   return (
     <>
       <div className="relative overflow-x-auto">
         <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-          <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-            <tr>
-              <th scope="col" className="px-6 py-3">
-                Issue
-              </th>
-              <th scope="col" className="px-6 py-3">
-                Description
-              </th>
-              <th scope="col" className="px-6 py-3">
-                Preffered Date
-              </th>
-              <th scope="col" className="px-6 py-3">
-                Actual Date
-              </th>
-              <th scope="col" className="px-6 py-3">
-                Location
-              </th>
-              <th scope="col" className="px-6 py-3">
-                Contact
-              </th>
-              <th scope="col" className="px-6 py-3">
-                Status
-              </th>
-            </tr>
-          </thead>
+  
           <tbody onClick={toggleModal} className={isClicked ? "cursor-pointer bg-gray-200" : "cursor-pointer"}>
             <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
               <th
@@ -73,12 +51,12 @@ export const ViewAppointment: React.FC<ViewAppointmentFormProps> = ({
               >
                 {issue}
               </th>
-              <td className="px-6 py-4">{description}</td>
-              <td className="px-6 py-4">{prefferedDate}</td>
-              <td className="px-6 py-4">{ActualDate}</td>
-              <td className="px-6 py-4">{location}</td>
-              <td className="px-6 py-4">{contact}</td>
-              <td className="px-6 py-4">{status}</td>
+              <td className="px-6 py-4" style={{ width: "200px", height: "100px" }}>{description}</td>
+              <td className="px-6 py-4"style={{ width: "200px", height: "100px" }}>{formattedDate}</td>
+              <td className="px-6 py-4"style={{ width: "200px", height: "100px" }}>{ActualDate}</td>
+              <td className="px-6 py-4"style={{ width: "200px", height: "100px" }}>{location}</td>
+              <td className="px-6 py-4"style={{ width: "200px", height: "100px" }}>{contact}</td>
+              <td className="px-6 py-4"style={{ width: "200px", height: "100px" }}>{status}</td>
             </tr>
           </tbody>
         </table>
@@ -90,14 +68,13 @@ export const ViewAppointment: React.FC<ViewAppointmentFormProps> = ({
           aria-hidden="true"
           className="fixed top-0 left-0 right-0 z-50 w-full h-screen flex items-center justify-center"
         >
-          <div className="relative bg-white rounded-lg shadow p-6">
+          <div className="relative bg-white rounded-lg shadow p-6" >
             <h3 className="text-xl font-semibold mb-4">Details</h3>
-            <h3 className="text-l font-semibold mb-4">Date: {issue}</h3>
-            <h3 className="text-l font-semibold mb-4">Title: {description}</h3>
-            <h3 className="text-l font-semibold mb-4">Concern: {prefferedDate}</h3>
-            <h3 className="text-l font-semibold mb-4">Urgency: {ActualDate}</h3>
-            <h3 className="text-l font-semibold mb-4">Type: {status}</h3>
-            <h3 className="text-l font-semibold mb-4">Status: </h3>
+            <h3 className="text-l font-semibold mb-4">Issue: {issue}</h3>
+            <h3 className="text-l font-semibold mb-4">Description: {description}</h3>
+            <h3 className="text-l font-semibold mb-4">Preffered Date & Time: {formattedDate}</h3>
+            <h3 className="text-l font-semibold mb-4">Actual Date & Time: {ActualDate}</h3>
+            <h3 className="text-l font-semibold mb-4">Status: {status}</h3>
             <h3 className="text-l font-semibold mb-4">Comment/Remarks: </h3>
             <div className="flex justify-end">
               <button

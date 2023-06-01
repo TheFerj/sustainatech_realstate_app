@@ -16,18 +16,11 @@ async function getData() {
 
 
 export default async function Home() {
-  const data = await getData()
-  console.log('-------data----')
-  console.log(data[0].name)
+
   return (
     <main>
       <pre></pre>
       <h2>Home</h2>
-      <h2>Server call</h2>
-      <pre>{data[0].name}</pre> {/* Display the extracted "id" property */}
-      
-      <h2>Client call</h2>
-      <User/>
     </main>
   )
 }
